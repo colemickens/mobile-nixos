@@ -1,22 +1,14 @@
 {
-  description = "A very basic flake";
+  description = "mobile-nixos";
 
   inputs = {
-    nixpkgs = { url = "github:colemickens/nixpkgs/cmpkgs"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
   };
 
-  outputs = inputs@{ ... }:
+  outputs = inputs:
     let
-      pkgImport = pkgs: system:
-      import pkgs {
-        system = system;
-        config = { allowUnfree = true; };
-      };
-    in
-  {
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    defaultPackage.x86_64-linux = self.packages.x86_64-linux.hello;
-
-  };
+    in {
+      mkDevice = import ./default.nix { nixpkgs = inputs.nixpkgs.legacyPackages."x86_64-linux"; };
+    };
 }
+

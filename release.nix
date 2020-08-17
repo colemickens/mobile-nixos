@@ -21,12 +21,13 @@ in
 # Some additional configuration will be made with this.
 # Mainly to work with some limitations (output size).
 , inNixOSHydra ? false
+, nixpkgs ? <nixpkgs>
 }:
 
 let
   # We require some `lib` stuff in here.
   # Pick a lib from the ambient <nixpkgs>.
-  pkgs' = import <nixpkgs> {};
+  pkgs' = import nixpkgs {};
   inherit (pkgs') lib releaseTools;
   inherit (mobileReleaseTools.withPkgs pkgs')
     evalFor

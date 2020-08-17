@@ -1,3 +1,5 @@
+{ nixpkgs ? <nixpkgs> }:
+
 let
   # Selection of the device can be made either through the environment or through
   # using `--argstr device [...]`.
@@ -15,7 +17,7 @@ let
   ;
 
   # "a" nixpkgs we're using for its lib.
-  pkgs' = import <nixpkgs> {};
+  pkgs' = import nixpkgs {};
   inherit (pkgs'.lib) optional strings;
   inherit (strings) concatStringsSep stringAsChars;
 in
