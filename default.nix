@@ -1,6 +1,16 @@
-{ nixpkgs ? <nixpkgs> }:
-
+{
+  # The identifier of the device this should be built for.
+  # (This gets massaged later on)
+  # This allows using `default.nix` as a pass-through function.
+  # See usage in examples folder.
+  device ? null
+, configuration ? null
+  # Internally used to tack on configuration by release.nix
+, additionalConfiguration ? {}
+, pkgs ? <nixpkgs>
+}:
 let
+
   # Selection of the device can be made either through the environment or through
   # using `--argstr device [...]`.
   deviceFromEnv = builtins.getEnv "MOBILE_NIXOS_DEVICE";
@@ -16,22 +26,16 @@ let
     else []
   ;
 
+  final_configuration = if configuration != null then configuration else default_configuration;
+
+  pkgs_ = import pkgs {
+    system = "x86_64-linux";
+  };
+
   # "a" nixpkgs we're using for its lib.
-  pkgs' = import nixpkgs {};
-  inherit (pkgs'.lib) optional strings;
+  inherit (pkgs_.lib) optional strings;
   inherit (strings) concatStringsSep stringAsChars;
-in
-{
-  # The identifier of the device this should be built for.
-  # (This gets massaged later on)
-  # This allows using `default.nix` as a pass-through function.
-  # See usage in examples folder.
-  device ? null
-, configuration ? default_configuration
-  # Internally used to tack on configuration by release.nix
-, additionalConfiguration ? {}
-}:
-let
+
   # Either use:
   #   The given `device`.
   #   The environment variable.
@@ -46,8 +50,9 @@ let
 
   # The "default" eval.
   eval = evalWith {
+    inherit pkgs;
     device = final_device;
-    modules = configuration;
+    modules = final_configuration;
     inherit additionalConfiguration;
   };
 

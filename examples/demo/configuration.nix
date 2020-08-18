@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, modulePath, ... }:
 
 let
   inherit (lib) mkForce;
@@ -23,8 +23,8 @@ in
   ];
 
   disabledModules = [
-    <nixpkgs/nixos/modules/installer/cd-dvd/iso-image.nix>
-    <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-base.nix>
+    "${modulePath}/installer/cd-dvd/iso-image.nix"
+    "${modulePath}/installer/cd-dvd/installation-cd-base.nix"
   ];
 
   config = lib.mkMerge [

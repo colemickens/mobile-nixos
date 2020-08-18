@@ -1,11 +1,14 @@
-{ device ? null }:
+{ device ? null
+, pkgs ? <nixpkgs>
+}:
+
 let
   system-build = import ../../. {
-    inherit device;
+    inherit device pkgs;
     configuration = [ { imports = [ ./configuration.nix ]; } ];
   };
   burn-tool-build = import ../../. {
-    inherit device;
+    inherit device pkgs;
     configuration = [ { imports = [ ./android-burn-tool.nix ]; } ];
   };
 in
