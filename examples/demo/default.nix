@@ -22,5 +22,5 @@ in
       # Depthcharge
       disk-image
     ;
-    android-burn-tool = burn-tool-build.build.android-bootimg;
+    android-burn-tool = burn-tool-build.build.android.bootimg;
   }

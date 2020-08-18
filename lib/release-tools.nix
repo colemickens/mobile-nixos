@@ -17,9 +17,10 @@
     , additionalConfiguration ? {}
     , baseModules ? (
           (import ../modules/module-list.nix)
-          ++ [ "${pkgs}/nixos/modules/module-list.nix" ]
+          ++ (import "${pkgs}/nixos/modules/module-list.nix")
         )
   }: import "${pkgs}/nixos/lib/eval-config.nix" {
+    system = "x86_64-linux";
     inherit baseModules;
     modules =
       (if device ? special
@@ -44,7 +45,7 @@
           config
           {
             mobile.device.info = {};
-            mobile.system.type = "none";
+            mobile.system.type = "noneaz";
             mobile.hardware.soc = {
               x86_64-linux = "generic-x86_64";
               aarch64-linux = "generic-aarch64";

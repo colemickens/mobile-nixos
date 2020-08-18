@@ -1,11 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
 let
   ifSystem = type: lib.mkIf (config.mobile.system.type == type);
 in
 {
   imports = [
-    <nixpkgs/nixos/modules/profiles/installation-device.nix>
+    "${modulesPath}/profiles/installation-device.nix"
   ];
 
   config = lib.mkMerge [

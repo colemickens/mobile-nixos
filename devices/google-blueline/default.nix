@@ -39,6 +39,7 @@
     };
   };
 
+
   mobile.system.vendor.partition = "/dev/disk/by-partlabel/vendor_a";
 
   boot.kernelParams = [
