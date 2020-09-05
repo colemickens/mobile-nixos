@@ -25,7 +25,7 @@ Building the full disk image may require a native AArch64 system.
 The boot partition can be built, and then flashed on top of an existing Mobile
 NixOS boot partition.
 
-```
+```shell
  $ nix-build --argstr device pine64-pinephone-braveheart -A build.boot-partition
  $ dd if=result/mobile-nixos-boot.img of=/dev/mmcblkXp1 bs=8M oflag=sync,direct status=progress
 ```

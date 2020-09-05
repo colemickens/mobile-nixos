@@ -22,6 +22,7 @@ in
   extraPatches = [
     # https://patchwork.ozlabs.org/patch/1202024
     (pw "1202024" "0c196zk1s3pq3wdv909sxmjgqpll2hwb817bpbghkfkyyknl96vg")
+    (pw "1312857" "0c196zk1s3pq3wdv909sxmjgqpll2hwb817bpbghkfkyyknl9999")
 
     # Adapted from: https://gitlab.com/pine64-org/u-boot/-/tree/crust
     # This drops the commits irrelevant for the pinephone.
