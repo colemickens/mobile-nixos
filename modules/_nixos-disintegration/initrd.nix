@@ -1,12 +1,12 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, modulesPath, ... }:
 
 let
   dummy = pkgs.runCommandNoCC "dummy" {} "touch $out";
 in
 {
   disabledModules = [
-    <nixpkgs/nixos/modules/tasks/encrypted-devices.nix>
-    <nixpkgs/nixos/modules/tasks/filesystems/zfs.nix>
+    "${modulesPath}/tasks/encrypted-devices.nix"
+    "${modulesPath}/tasks/filesystems/zfs.nix"
   ];
 
   config = {

@@ -11,11 +11,16 @@
   # Note that we can receive a "special" configuration, used internally by
   # `release.nix` and not part of the public API.
   evalWith =
-    { modules
+    { pkgs
+    , modules
     , device
     , additionalConfiguration ? {}
-    , baseModules ? ((import ../modules/module-list.nix) ++ [ ../modules/_nixos-integration.nix ])
-  }: import ./eval-config.nix {
+    , baseModules ? (
+          (import ../modules/module-list.nix)
+          ++ (import "${pkgs}/nixos/modules/module-list.nix")
+        )
+  }: import "${pkgs}/nixos/lib/eval-config.nix" {
+    system = "x86_64-linux";
     inherit baseModules;
     modules =
       (if device ? special
@@ -40,6 +45,7 @@
           config
           {
             mobile.system.type = "none";
+            mobile.device.info = {};
             mobile.hardware.soc = {
               x86_64-linux = "generic-x86_64";
               aarch64-linux = "generic-aarch64";
