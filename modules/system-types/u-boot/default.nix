@@ -1,4 +1,4 @@
-{ config, pkgs, lib, modules, baseModules, ... }:
+{ config, pkgs, lib, inputs, modules, baseModules, ... }:
 
 let
   inherit (pkgs) hostPlatform buildPackages imageBuilder runCommandNoCC;
@@ -21,7 +21,7 @@ let
   # NixOS (<nixpkgs/modules/system/activation/top-level.nix>)
   # Here we're only adding the `is_recovery` option.
   # In the future, we may want to move the recovery configuration to a file.
-  recovery = (import ../../../lib/eval-config.nix {
+  recovery = (import "${inputs.nixpkgs}/nixos/lib/eval-config.nix" {
     inherit baseModules;
     modules = modules ++ [{
       mobile.boot.stage-1.bootConfig = {
