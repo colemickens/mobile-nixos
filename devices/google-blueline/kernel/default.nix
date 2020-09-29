@@ -9,18 +9,18 @@ let
   inherit (buildPackages) dtc;
 in
 
-(mobile-nixos.kernel-builder-gcc6 {
+(mobile-nixos.kernel-builder {
   configfile = ./config.aarch64;
 
   file = "Image.gz-dtb";
   hasDTB = true;
 
-  version = "4.9.237";
+  version = "4.9.223";
   src = fetchFromGitHub {
     owner = "android-linux-stable";
     repo = "bluecross";
-    rev = "66391b2201b686c9c27ab15d5d3976bf8c322058";
-    sha256 = "sha256-ZYYdH2pwEdyMDTbpqXvflXdJDeWeLTfSIR1qIsjuBH8=";
+    rev = "03867dba971b550ab1546e3147942227d224ddd3";
+    sha256 = "sha256-ia6gTRT52Suz7jqqRN9gwU9T1UQ6i93qj0RqVxndfkc=";
   };
 
   #patches = [

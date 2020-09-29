@@ -8,7 +8,7 @@
   kernelMainline = pkgs.callPackage ./kernel-mainline {
     kernelPatches = pkgs.defaultKernelPatches;
   };
-  kernelAndroid = pkgs.callPackage ./kernel-android {
+  kernelAndroid = pkgs.callPackage ./kernel {
     kernelPatches = pkgs.defaultKernelPatches;
   };
   #activeKernel = kernelMainline; # boot, screen corruption
