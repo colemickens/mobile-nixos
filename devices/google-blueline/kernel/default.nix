@@ -11,7 +11,7 @@ in
 
 #(mobile-nixos.kernel-builder-gcc6 {    # failed
 #(mobile-nixos.kernel-builder {         # failed
-(mobile-nixos.kernel-builder-clang_9 { # wip
+(mobile-nixos.kernel-builder-clang_11 { # wip
   configfile = ./config.aarch64;
 
   file = "Image.gz-dtb";
