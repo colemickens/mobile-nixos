@@ -9,7 +9,9 @@ let
   inherit (buildPackages) dtc;
 in
 
-(mobile-nixos.kernel-builder {
+#(mobile-nixos.kernel-builder-gcc6 {    # failed
+#(mobile-nixos.kernel-builder {         # failed
+(mobile-nixos.kernel-builder-clang_9 { # wip
   configfile = ./config.aarch64;
 
   file = "Image.gz-dtb";
