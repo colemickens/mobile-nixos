@@ -58,6 +58,8 @@ in
     hardshutdown = callPackage ./hardshutdown {};
     bootlogd = callPackage ./bootlogd {};
 
+    qmic = callPackage ./qmic { };
+
     qrtr = callPackage ./qrtr/qrtr.nix { };
     qmic = callPackage ./qrtr/qmic.nix { };
     tqftpserv = callPackage ./qrtr/tqftpserv.nix { };
