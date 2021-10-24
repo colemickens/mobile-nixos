@@ -58,6 +58,7 @@ in
     hardshutdown = callPackage ./hardshutdown {};
     bootlogd = callPackage ./bootlogd {};
 
+    payload-dumper-go = callPackage ./payload-dumper-go { };
     qmic = callPackage ./qmic { };
 
     qrtr = callPackage ./qrtr/qrtr.nix { };
