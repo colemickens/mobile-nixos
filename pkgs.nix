@@ -1,9 +1,17 @@
 let
-  sha256 = "sha256:1ipd1k1gvxh9sbg4w4cpa3585q09gvsq8xbjvxnnmfjib6r6xx4i";
-  rev = "dfd82985c273aac6eced03625f454b334daae2e8";
+  flake = (import
+    (
+      let lock = builtins.fromJSON (builtins.readFile ./flake.lock); in
+      fetchTarball {
+        url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+        sha256 = lock.nodes.flake-compat.locked.narHash;
+      }
+    )
+    {
+      src = ./.;
+    }
+  );
 in
-builtins.trace "(Using pinned Nixpkgs at ${rev})"
-import (fetchTarball {
-  url = "https://github.com/NixOS/nixpkgs/archive/${rev}.tar.gz";
-  inherit sha256;
-})
+  builtins.trace
+    "(Using pinned Nixpkgs at ${lock.nodes.nixpkgs.locked.rev})"
+    defaultNix.inputs.nixpkgs
