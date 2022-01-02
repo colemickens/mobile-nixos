@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    # Implementations of the kernel provenances
-    ./mainline.nix
-    ./vendor.nix
-  ];
-
   mobile.device.name = "google-blueline";
   mobile.device.identity = {
     name = "Pixel 3";
@@ -24,6 +18,8 @@
   mobile.system.android.device_name = "blueline";
   mobile.system.android = {
     # This device has an A/B partition scheme.
+    # NOTE: while A/B, we cannot rely on anything else than `boot` as this
+    #       device uses dynamic partitions.
     ab_partitions = true;
 
     bootimg.flash = {
@@ -36,18 +32,18 @@
     };
   };
 
-  # List of valid provenances
-  mobile.boot.stage-1.kernel.availableProvenances = [
-    "mainline"
-    "vendor"
+  mobile.boot.stage-1 = {
+    kernel.package = pkgs.callPackage ./kernel-mainline { };
+    compression = "xz";
+  };
+
+  mobile.device.firmware = pkgs.callPackage ./firmware-mainline {
+    vendor-firmware-files = pkgs.callPackage ./firmware-vendor { };
+  };
+
+  mobile.boot.stage-1.firmware = [
+    config.mobile.device.firmware
   ];
-
-  # TODO: Once mainline works well enough
-  # mobile.boot.stage-1.kernel.provenance = lib.mkDefault "mainline";
-
-  # The dynamic partitions retrofit probably break this.
-  # The GPT partitions don't map to the actual on-disk partitions anymore.
-  # mobile.system.vendor.partition = "/dev/disk/by-partlabel/vendor_a";
 
   boot.kernelParams = [
     # Extracted from an Android boot image
@@ -68,4 +64,5 @@
     adb = "ffs.adb";
     rndis = "rndis.usb0";
   };
+  mobile.system.android.system_partition_destination = "userdata";
 }
