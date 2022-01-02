@@ -1,7 +1,7 @@
-From fa027cefdcdc5035e8973ed5ba90e42ca7153b97 Mon Sep 17 00:00:00 2001
+From 8230cf75e2f30f1768e3a9349c4d084905d56cd2 Mon Sep 17 00:00:00 2001
 From: Amit Pundir <amit.pundir@linaro.org>
 Date: Thu, 6 Jun 2019 19:38:51 +0530
-Subject: [PATCH 01/22] blueline: arm64: dts: qcom: Add Blueline (Pixel 3)
+Subject: [PATCH 01/24] blueline: arm64: dts: qcom: Add Blueline (Pixel 3)
 
 This adds an initial dts for the Blueline (Pixel 3). Supported
 functionality includes Debug UART, UFS, USB-C (peripheral), USB-A
@@ -32,17 +32,17 @@ Signed-off-by: Sumit Semwal <sumit.semwal@linaro.org>
  create mode 100644 arch/arm64/boot/dts/qcom/sdm845-blueline.dts
 
 diff --git a/arch/arm64/boot/dts/qcom/Makefile b/arch/arm64/boot/dts/qcom/Makefile
-index 70516508be561..e8849405d4896 100644
+index e3fa838973faf..eed1671abae39 100644
 --- a/arch/arm64/boot/dts/qcom/Makefile
 +++ b/arch/arm64/boot/dts/qcom/Makefile
-@@ -78,6 +78,7 @@ dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-cheza-r1.dtb
+@@ -84,6 +84,7 @@ dtb-$(CONFIG_ARCH_QCOM)	+= sdm630-sony-xperia-nile-pioneer.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sdm630-sony-xperia-nile-voyager.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sdm636-sony-xperia-ganges-mermaid.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sdm660-xiaomi-lavender.dtb
++dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-blueline.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-cheza-r1.dtb
  dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-cheza-r2.dtb
  dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-cheza-r3.dtb
- dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-db845c.dtb
-+dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-blueline.dtb
- dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-mtp.dtb
- dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-oneplus-enchilada.dtb
- dtb-$(CONFIG_ARCH_QCOM)	+= sdm845-oneplus-fajita.dtb
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-blueline.dts b/arch/arm64/boot/dts/qcom/sdm845-blueline.dts
 new file mode 100644
 index 0000000000000..7e6200f29b8a8
@@ -626,13 +626,13 @@ index 0000000000000..7e6200f29b8a8
 +	firmware-name = "qcom/sdm845/mba.mbn", "qcom/sdm845/modem.mbn";
 +};
 -- 
-2.32.0
+2.34.0
 
 
-From ff0748f7f84e8a8051f8e2aa4bdc53241b4b19b0 Mon Sep 17 00:00:00 2001
+From 7253b02505def9174f36594b805b2ab319cdf3cb Mon Sep 17 00:00:00 2001
 From: Sumit Semwal <sumit.semwal@linaro.org>
 Date: Wed, 29 Jan 2020 00:53:58 +0530
-Subject: [PATCH 02/22] blueline_defconfig: Add blueline_defconfig for pixel3
+Subject: [PATCH 02/24] blueline_defconfig: Add blueline_defconfig for pixel3
 
 ==
 - Corrected soc to soc@0
@@ -1409,13 +1409,13 @@ index 0000000000000..9c4cb473e40f5
 +CONFIG_CORESIGHT_STM=y
 +# CONFIG_RUNTIME_TESTING_MENU is not set
 -- 
-2.32.0
+2.34.0
 
 
-From f3db87e7d68936b6d034d6ee453809c8049d9f0c Mon Sep 17 00:00:00 2001
+From db9a410a71f9daea147749340a6ff57ddbc6eb5b Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Wed, 7 Apr 2021 23:59:51 +0530
-Subject: [PATCH 03/22] remove hdmi regulators
+Subject: [PATCH 03/24] remove hdmi regulators
 
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
@@ -1479,13 +1479,13 @@ index 7e6200f29b8a8..86ce790b35012 100644
  		compatible = "regulator-fixed";
  		regulator-name = "VBAT";
 -- 
-2.32.0
+2.34.0
 
 
-From 7e52842afa6305d2e2da6113df719242d94bc920 Mon Sep 17 00:00:00 2001
+From 1a57c6aa1e8947673828cc293616f4d979e8e841 Mon Sep 17 00:00:00 2001
 From: Sumit Semwal <sumit.semwal@linaro.org>
 Date: Mon, 1 Jul 2019 18:54:23 +0530
-Subject: [PATCH 04/22] dt-bindings: panel: Add LG SW43408 MIPI-DSI panel
+Subject: [PATCH 04/24] dt-bindings: panel: Add LG SW43408 MIPI-DSI panel
 
     LG SW43408 is 1080x2160, 4-lane MIPI-DSI panel.
 
@@ -1553,13 +1553,13 @@ index 0000000000000..0955a9f11011b
 +	};
 +	};
 -- 
-2.32.0
+2.34.0
 
 
-From 2c7c1764ff57f8ec1f2e7875fb74092d2939ee0c Mon Sep 17 00:00:00 2001
+From 2360f8a6ceeca636e1b0ec6e3090678e726d59c7 Mon Sep 17 00:00:00 2001
 From: Sumit Semwal <sumit.semwal@linaro.org>
 Date: Wed, 19 Jun 2019 12:06:21 +0530
-Subject: [PATCH 05/22] drm: panel: Add lg sw43408 panel driver
+Subject: [PATCH 05/24] drm: panel: Add lg sw43408 panel driver
 
 LG SW43408 is 1080x2160, 4-lane MIPI-DSI panel, used in some Pixel3
 phones.
@@ -1577,10 +1577,10 @@ Change-Id: I19e34e6354a38432881fa673aced39bf35e2fc46
  create mode 100644 drivers/gpu/drm/panel/panel-lg-sw43408.c
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 5b33791bb8e97..225a813bc2200 100644
+index 13f9a84a617e3..37386d0b69527 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -5897,6 +5897,13 @@ S:	Orphan / Obsolete
+@@ -6011,6 +6011,13 @@ S:	Orphan / Obsolete
  F:	drivers/gpu/drm/i810/
  F:	include/uapi/drm/i810_drm.h
  
@@ -1595,10 +1595,10 @@ index 5b33791bb8e97..225a813bc2200 100644
  M:	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
  L:	dri-devel@lists.freedesktop.org
 diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
-index beb581b96ecdc..1834c43a87e42 100644
+index 6c2942920a46b..d7287499f3cf2 100644
 --- a/drivers/gpu/drm/panel/Kconfig
 +++ b/drivers/gpu/drm/panel/Kconfig
-@@ -221,6 +221,17 @@ config DRM_PANEL_LEADTEK_LTK500HD1829
+@@ -244,6 +244,17 @@ config DRM_PANEL_LEADTEK_LTK500HD1829
  	  24 bit RGB per pixel. It provides a MIPI DSI interface to
  	  the host and has a built-in LED backlight.
  
@@ -1617,10 +1617,10 @@ index beb581b96ecdc..1834c43a87e42 100644
  	tristate "Samsung LD9040 RGB/SPI panel"
  	depends on OF && SPI
 diff --git a/drivers/gpu/drm/panel/Makefile b/drivers/gpu/drm/panel/Makefile
-index c8132050bcec0..7a9b65a3133f1 100644
+index 2b147c6e5ab81..34feabee8623f 100644
 --- a/drivers/gpu/drm/panel/Makefile
 +++ b/drivers/gpu/drm/panel/Makefile
-@@ -22,6 +22,7 @@ obj-$(CONFIG_DRM_PANEL_LEADTEK_LTK050H3146W) += panel-leadtek-ltk050h3146w.o
+@@ -24,6 +24,7 @@ obj-$(CONFIG_DRM_PANEL_LEADTEK_LTK050H3146W) += panel-leadtek-ltk050h3146w.o
  obj-$(CONFIG_DRM_PANEL_LEADTEK_LTK500HD1829) += panel-leadtek-ltk500hd1829.o
  obj-$(CONFIG_DRM_PANEL_LG_LB035Q02) += panel-lg-lb035q02.o
  obj-$(CONFIG_DRM_PANEL_LG_LG4573) += panel-lg-lg4573.o
@@ -2360,13 +2360,13 @@ index 0000000000000..e6192df05a7c3
 +MODULE_DESCRIPTION("LG SW436408 MIPI-DSI LED panel");
 +MODULE_LICENSE("GPL");
 -- 
-2.32.0
+2.34.0
 
 
-From 8f591fe0d4ef57fdbdd6289fb7abca9e9463b2ca Mon Sep 17 00:00:00 2001
+From a6546da6a04c766ad1c88105a66371bfe9b06f64 Mon Sep 17 00:00:00 2001
 From: Sumit Semwal <sumit.semwal@linaro.org>
 Date: Wed, 22 Jan 2020 13:06:22 +0530
-Subject: [PATCH 06/22] arm64: dts: qcom: sdm845c: Add pinmux nodes for dsi
+Subject: [PATCH 06/24] arm64: dts: qcom: sdm845c: Add pinmux nodes for dsi
  panels
 
 Dsi panels need pinmux nodes for suspend/active pinmux
@@ -2379,10 +2379,10 @@ Signed-off-by: Sumit Semwal <sumit.semwal@linaro.org>
  1 file changed, 52 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845.dtsi b/arch/arm64/boot/dts/qcom/sdm845.dtsi
-index 6d7172e6f4c30..f84f95c391cd8 100644
+index 2546dc693b7b5..74086e6d856f5 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845.dtsi
 +++ b/arch/arm64/boot/dts/qcom/sdm845.dtsi
-@@ -2950,6 +2950,58 @@ config {
+@@ -3013,6 +3013,58 @@ config {
  					bias-disable;
  				};
  			};
@@ -2442,13 +2442,13 @@ index 6d7172e6f4c30..f84f95c391cd8 100644
  
  		mss_pil: remoteproc@4080000 {
 -- 
-2.32.0
+2.34.0
 
 
-From cd4bd5eb28135bcd44181643db62154f5a1be62d Mon Sep 17 00:00:00 2001
+From 3fbb70b5e5a1ca0ffe4380b0b0d0c1a8572d1d91 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Thu, 20 May 2021 17:05:33 +0530
-Subject: [PATCH 07/22] blueline_defconfig: add configs
+Subject: [PATCH 07/24] blueline_defconfig: add configs
 
 Add missing msm pinctrl config
 Add devtmpfs configs
@@ -2480,13 +2480,13 @@ index 9c4cb473e40f5..0b08bfd5f38e1 100644
  CONFIG_PINCTRL_QCOM_SPMI_PMIC=y
  CONFIG_PINCTRL_SDM845=y
 -- 
-2.32.0
+2.34.0
 
 
-From 8e5871def4bd03ec1e4b0d8c9f38635d478aa39d Mon Sep 17 00:00:00 2001
+From d463a8340db67442071b84666d7a19e2f088514a Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Thu, 20 May 2021 21:53:08 +0530
-Subject: [PATCH 08/22] blueline: arm64: dts: qcom: Add display nodes
+Subject: [PATCH 08/24] blueline: arm64: dts: qcom: Add display nodes
 
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
@@ -2655,13 +2655,13 @@ index 86ce790b35012..37fde74ca2714 100644
 +	regulator-always-on;
 +};
 -- 
-2.32.0
+2.34.0
 
 
-From dea2427a094d8c480a99c8e508e1a6841ef418e4 Mon Sep 17 00:00:00 2001
+From 5db284d8668dd2b3ff1b19c60de09892aa6eb79f Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Thu, 20 May 2021 21:54:50 +0530
-Subject: [PATCH 09/22] drm/dsc: Fix a typo
+Subject: [PATCH 09/24] drm/dsc: Fix a typo
 
 Fix typo s/i/is in the comment
 
@@ -2684,13 +2684,13 @@ index cf43561e60fad..bbe120f461e58 100644
  	u8 rc_tgt_offset;
  	/**
 -- 
-2.32.0
+2.34.0
 
 
-From e81b749a7fba71199f55882129a6e0e405f14fec Mon Sep 17 00:00:00 2001
+From 594fb51ff5f847a2654c18af59444afc9d97c727 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 16:04:02 +0530
-Subject: [PATCH 10/22] drm/msm/dsi: add support for dsc data
+Subject: [PATCH 10/24] drm/msm/dsi: add support for dsc data
 
 Display Stream Compression (DSC) parameters need to be calculated. Add
 helpers and struct msm_display_dsc_config in msm_drv for this
@@ -2699,11 +2699,11 @@ msm_display_dsc_config uses drm_dsc_config for DSC parameters.
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
  drivers/gpu/drm/msm/dsi/dsi_host.c | 132 +++++++++++++++++++++++++++++
- drivers/gpu/drm/msm/msm_drv.h      |  18 ++++
- 2 files changed, 150 insertions(+)
+ drivers/gpu/drm/msm/msm_drv.h      |  20 +++++
+ 2 files changed, 152 insertions(+)
 
 diff --git a/drivers/gpu/drm/msm/dsi/dsi_host.c b/drivers/gpu/drm/msm/dsi/dsi_host.c
-index e269df285136c..ba24458c2e38e 100644
+index 0afc3b756f92d..6ee8cad68c311 100644
 --- a/drivers/gpu/drm/msm/dsi/dsi_host.c
 +++ b/drivers/gpu/drm/msm/dsi/dsi_host.c
 @@ -31,6 +31,8 @@
@@ -2715,7 +2715,7 @@ index e269df285136c..ba24458c2e38e 100644
  static int dsi_get_version(const void __iomem *base, u32 *major, u32 *minor)
  {
  	u32 ver;
-@@ -156,6 +158,7 @@ struct msm_dsi_host {
+@@ -157,6 +159,7 @@ struct msm_dsi_host {
  	struct regmap *sfpb;
  
  	struct drm_display_mode *mode;
@@ -2723,7 +2723,7 @@ index e269df285136c..ba24458c2e38e 100644
  
  	/* connected device info */
  	struct device_node *device_node;
-@@ -1748,6 +1751,135 @@ static int dsi_host_parse_lane_data(struct msm_dsi_host *msm_host,
+@@ -1712,6 +1715,135 @@ static int dsi_host_parse_lane_data(struct msm_dsi_host *msm_host,
  	return -EINVAL;
  }
  
@@ -2860,7 +2860,7 @@ index e269df285136c..ba24458c2e38e 100644
  {
  	struct device *dev = &msm_host->pdev->dev;
 diff --git a/drivers/gpu/drm/msm/msm_drv.h b/drivers/gpu/drm/msm/msm_drv.h
-index 8b005d1ac8997..367eb1092374c 100644
+index 69952b2393843..de7cb65bfc522 100644
 --- a/drivers/gpu/drm/msm/msm_drv.h
 +++ b/drivers/gpu/drm/msm/msm_drv.h
 @@ -30,6 +30,7 @@
@@ -2871,7 +2871,7 @@ index 8b005d1ac8997..367eb1092374c 100644
  #include <drm/msm_drm.h>
  #include <drm/drm_gem.h>
  
-@@ -135,6 +136,20 @@ struct msm_drm_thread {
+@@ -134,6 +135,22 @@ struct msm_drm_thread {
  	struct kthread_worker *worker;
  };
  
@@ -2887,12 +2887,14 @@ index 8b005d1ac8997..367eb1092374c 100644
 +	u32 pclk_per_line;
 +	u32 slice_last_group_size;
 +	u32 det_thresh_flatness;
++
++	unsigned int dsc_mask;
 +};
 +
  struct msm_drm_private {
  
  	struct drm_device *dev;
-@@ -229,6 +244,9 @@ struct msm_drm_private {
+@@ -228,6 +245,9 @@ struct msm_drm_private {
  	/* Properties */
  	struct drm_property *plane_property[PLANE_PROP_MAX_NUM];
  
@@ -2903,13 +2905,13 @@ index 8b005d1ac8997..367eb1092374c 100644
  	struct {
  		unsigned long size;
 -- 
-2.32.0
+2.34.0
 
 
-From 56844737c1d8e7a83d8fb4db0f0dbb3b6e14184f Mon Sep 17 00:00:00 2001
+From 07a1830b6f566ae1a677c8c45cf7294fb5727655 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 15:24:40 +0530
-Subject: [PATCH 11/22] drm/msm/disp/dpu1: Add support for DSC
+Subject: [PATCH 11/24] drm/msm/disp/dpu1: Add support for DSC
 
 Display Stream Compression (DSC) is one of the hw blocks in dpu, so add
 support by adding hw blocks for DSC
@@ -2926,10 +2928,10 @@ Signed-off-by: Vinod Koul <vkoul@kernel.org>
  create mode 100644 drivers/gpu/drm/msm/disp/dpu1/dpu_hw_dsc.h
 
 diff --git a/drivers/gpu/drm/msm/Makefile b/drivers/gpu/drm/msm/Makefile
-index 904535eda0c4c..46c05e401d047 100644
+index 093454457545f..f58dd3cea6a1c 100644
 --- a/drivers/gpu/drm/msm/Makefile
 +++ b/drivers/gpu/drm/msm/Makefile
-@@ -60,6 +60,7 @@ msm-y := \
+@@ -62,6 +62,7 @@ msm-y := \
  	disp/dpu1/dpu_formats.o \
  	disp/dpu1/dpu_hw_catalog.o \
  	disp/dpu1/dpu_hw_ctl.o \
@@ -2938,7 +2940,7 @@ index 904535eda0c4c..46c05e401d047 100644
  	disp/dpu1/dpu_hw_intf.o \
  	disp/dpu1/dpu_hw_lm.o \
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h
-index d2a945a27cfaa..699c378814b1f 100644
+index 4ade44bbd37e3..65f43fadcda05 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h
 @@ -553,6 +553,16 @@ struct dpu_merge_3d_cfg  {
@@ -2958,7 +2960,7 @@ index d2a945a27cfaa..699c378814b1f 100644
  /**
   * struct dpu_intf_cfg - information of timing engine blocks
   * @id                 enum identifying this block
-@@ -757,6 +767,9 @@ struct dpu_mdss_cfg {
+@@ -749,6 +759,9 @@ struct dpu_mdss_cfg {
  	u32 merge_3d_count;
  	const struct dpu_merge_3d_cfg *merge_3d;
  
@@ -2970,7 +2972,7 @@ index d2a945a27cfaa..699c378814b1f 100644
  
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_dsc.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_dsc.c
 new file mode 100644
-index 0000000000000..09682c4832ba7
+index 0000000000000..449d6f1dad287
 --- /dev/null
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_dsc.c
 @@ -0,0 +1,210 @@
@@ -3018,7 +3020,7 @@ index 0000000000000..09682c4832ba7
 +	struct dpu_hw_blk_reg_map *c = &hw_dsc->hw;
 +	u32 data, lsb, bpp;
 +	u32 initial_lines = dsc->initial_lines;
-+	bool is_cmd_mode = !(mode & BIT(2));
++	bool is_cmd_mode = !(mode & DSC_MODE_VIDEO);
 +
 +	DPU_REG_WRITE(c, DSC_COMMON_MODE, mode);
 +
@@ -3305,19 +3307,20 @@ index bb9ceadeb0bb7..b0ce8cb97d22c 100644
  
  #endif  /* _DPU_HW_MDSS_H */
 -- 
-2.32.0
+2.34.0
 
 
-From 665e777d4738441d5b94309cf59aafaf3d7b9f37 Mon Sep 17 00:00:00 2001
+From 8ce547c99876463d5a4ddef838f35844530a1890 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 15:24:40 +0530
-Subject: [PATCH 12/22] drm/msm/disp/dpu1: Add support for DSC in pingpong
+Subject: [PATCH 12/24] drm/msm/disp/dpu1: Add support for DSC in pingpong
  block
 
 In SDM845, DSC can be enabled by writing to pingpong block registers, so
 add support for DSC in hw_pp
 
 Reviewed-by: Abhinav Kumar <abhinavk@codeaurora.org>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
  .../gpu/drm/msm/disp/dpu1/dpu_hw_pingpong.c   | 32 +++++++++++++++++++
@@ -3407,186 +3410,24 @@ index 89d08a715c16d..12758468d9ca1 100644
  
  struct dpu_hw_merge_3d;
 -- 
-2.32.0
+2.34.0
 
 
-From cc891e87a1c0e86ec7777c0e66f66ee7a69a1e26 Mon Sep 17 00:00:00 2001
-From: Vinod Koul <vkoul@kernel.org>
-Date: Fri, 21 May 2021 16:15:27 +0530
-Subject: [PATCH 13/22] drm/msm/disp/dpu1: Add DSC support in RM
-
-This add the bits in RM to enable the DSC blocks
-
-Signed-off-by: Vinod Koul <vkoul@kernel.org>
----
- drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h |  1 +
- drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c  | 61 +++++++++++++++++++++++++
- drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h  |  1 +
- 3 files changed, 63 insertions(+)
-
-diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h b/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h
-index 323a6bce9e646..da646817585df 100644
---- a/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h
-+++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h
-@@ -159,6 +159,7 @@ struct dpu_global_state {
- 	uint32_t ctl_to_enc_id[CTL_MAX - CTL_0];
- 	uint32_t intf_to_enc_id[INTF_MAX - INTF_0];
- 	uint32_t dspp_to_enc_id[DSPP_MAX - DSPP_0];
-+	uint32_t dsc_to_enc_id[DSC_MAX - DSC_0];
- };
- 
- struct dpu_global_state
-diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c
-index f9c83d6e427ad..95bdabc162801 100644
---- a/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c
-+++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c
-@@ -11,6 +11,7 @@
- #include "dpu_hw_intf.h"
- #include "dpu_hw_dspp.h"
- #include "dpu_hw_merge3d.h"
-+#include "dpu_hw_dsc.h"
- #include "dpu_encoder.h"
- #include "dpu_trace.h"
- 
-@@ -75,6 +76,14 @@ int dpu_rm_destroy(struct dpu_rm *rm)
- 			dpu_hw_intf_destroy(hw);
- 		}
- 	}
-+	for (i = 0; i < ARRAY_SIZE(rm->dsc_blks); i++) {
-+		struct dpu_hw_dsc *hw;
-+
-+		if (rm->dsc_blks[i]) {
-+			hw = to_dpu_hw_dsc(rm->dsc_blks[i]);
-+			dpu_hw_dsc_destroy(hw);
-+		}
-+	}
- 
- 	return 0;
- }
-@@ -221,6 +230,19 @@ int dpu_rm_init(struct dpu_rm *rm,
- 		rm->dspp_blks[dspp->id - DSPP_0] = &hw->base;
- 	}
- 
-+	for (i = 0; i < cat->dsc_count; i++) {
-+		struct dpu_hw_dsc *hw;
-+		const struct dpu_dsc_cfg *dsc = &cat->dsc[i];
-+
-+		hw = dpu_hw_dsc_init(dsc->id, mmio, cat);
-+		if (IS_ERR_OR_NULL(hw)) {
-+			rc = PTR_ERR(hw);
-+			DPU_ERROR("failed dsc object creation: err %d\n", rc);
-+			goto fail;
-+		}
-+		rm->dsc_blks[dsc->id - DSC_0] = &hw->base;
-+	}
-+
- 	return 0;
- 
- fail:
-@@ -476,6 +498,7 @@ static int _dpu_rm_reserve_intf(
- 	}
- 
- 	global_state->intf_to_enc_id[idx] = enc_id;
-+
- 	return 0;
- }
- 
-@@ -500,6 +523,33 @@ static int _dpu_rm_reserve_intf_related_hw(
- 	return ret;
- }
- 
-+static int _dpu_rm_reserve_dsc(struct dpu_rm *rm,
-+			       struct dpu_global_state *global_state,
-+			       struct drm_encoder *enc)
-+{
-+	struct msm_drm_private *priv;
-+
-+	priv = enc->dev->dev_private;
-+
-+	if (!priv)
-+		return -EIO;
-+
-+	/* check if DSC is supported */
-+	if (!priv->dsc)
-+		return 0;
-+
-+	/* check if DSC 0 & 1 and allocated or not */
-+	if (global_state->dsc_to_enc_id[0] || global_state->dsc_to_enc_id[1]) {
-+		DPU_ERROR("DSC 0|1 is already allocated\n");
-+		return -EIO;
-+	}
-+
-+	global_state->dsc_to_enc_id[0] = enc->base.id;
-+	global_state->dsc_to_enc_id[1] = enc->base.id;
-+
-+	return 0;
-+}
-+
- static int _dpu_rm_make_reservation(
- 		struct dpu_rm *rm,
- 		struct dpu_global_state *global_state,
-@@ -526,6 +576,10 @@ static int _dpu_rm_make_reservation(
- 	if (ret)
- 		return ret;
- 
-+	ret  = _dpu_rm_reserve_dsc(rm, global_state, enc);
-+	if (ret)
-+		return ret;
-+
- 	return ret;
- }
- 
-@@ -567,6 +621,8 @@ void dpu_rm_release(struct dpu_global_state *global_state,
- 		ARRAY_SIZE(global_state->ctl_to_enc_id), enc->base.id);
- 	_dpu_rm_clear_mapping(global_state->intf_to_enc_id,
- 		ARRAY_SIZE(global_state->intf_to_enc_id), enc->base.id);
-+	_dpu_rm_clear_mapping(global_state->dsc_to_enc_id,
-+		ARRAY_SIZE(global_state->dsc_to_enc_id), enc->base.id);
- }
- 
- int dpu_rm_reserve(
-@@ -640,6 +696,11 @@ int dpu_rm_get_assigned_resources(struct dpu_rm *rm,
- 		hw_to_enc_id = global_state->dspp_to_enc_id;
- 		max_blks = ARRAY_SIZE(rm->dspp_blks);
- 		break;
-+	case DPU_HW_BLK_DSC:
-+		hw_blks = rm->dsc_blks;
-+		hw_to_enc_id = global_state->dsc_to_enc_id;
-+		max_blks = ARRAY_SIZE(rm->dsc_blks);
-+		break;
- 	default:
- 		DPU_ERROR("blk type %d not managed by rm\n", type);
- 		return 0;
-diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h b/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h
-index 1f12c8d5b8aa0..278d2a510b807 100644
---- a/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h
-+++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h
-@@ -30,6 +30,7 @@ struct dpu_rm {
- 	struct dpu_hw_blk *intf_blks[INTF_MAX - INTF_0];
- 	struct dpu_hw_blk *dspp_blks[DSPP_MAX - DSPP_0];
- 	struct dpu_hw_blk *merge_3d_blks[MERGE_3D_MAX - MERGE_3D_0];
-+	struct dpu_hw_blk *dsc_blks[DSC_MAX - DSC_0];
- 
- 	uint32_t lm_max_width;
- };
--- 
-2.32.0
-
-
-From 01da43c88da0e55550fc71cb48ccb1a5edffb9b3 Mon Sep 17 00:00:00 2001
+From e953fcf4bdf2cfd88682554a7c0607a42e25e100 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 16:20:57 +0530
-Subject: [PATCH 14/22] drm/msm/disp/dpu1: Add DSC for SDM845 to hw_catalog
+Subject: [PATCH 13/24] drm/msm/disp/dpu1: Add DSC for SDM845 to hw_catalog
 
 This adds SDM845 DSC blocks into hw_catalog
 
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
  .../gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c    | 20 +++++++++++++++++++
  1 file changed, 20 insertions(+)
 
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
-index b131fd376192b..6423a2fe66988 100644
+index ce6f32a919e50..c773bbe57b6b8 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
 @@ -821,6 +821,24 @@ static const struct dpu_pingpong_cfg sc7280_pp[] = {
@@ -3614,7 +3455,7 @@ index b131fd376192b..6423a2fe66988 100644
  /*************************************************************
   * INTF sub blocks config
   *************************************************************/
-@@ -1130,6 +1148,8 @@ static void sdm845_cfg_init(struct dpu_mdss_cfg *dpu_cfg)
+@@ -1124,6 +1142,8 @@ static void sdm845_cfg_init(struct dpu_mdss_cfg *dpu_cfg)
  		.mixer = sdm845_lm,
  		.pingpong_count = ARRAY_SIZE(sdm845_pp),
  		.pingpong = sdm845_pp,
@@ -3624,44 +3465,44 @@ index b131fd376192b..6423a2fe66988 100644
  		.intf = sdm845_intf,
  		.vbif_count = ARRAY_SIZE(sdm845_vbif),
 -- 
-2.32.0
+2.34.0
 
 
-From 2794f101da33dd05f7efd85d812d9bf4cf40fd5e Mon Sep 17 00:00:00 2001
+From d86682239076c710fb037769cc26e20113efc94d Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 16:32:33 +0530
-Subject: [PATCH 15/22] drm/msm/disp/dpu1: Don't use DSC with mode_3d
+Subject: [PATCH 14/24] drm/msm/disp/dpu1: Don't use DSC with mode_3d
 
 We cannot enable mode_3d when we are using the DSC. So pass
 configuration to detect DSC is enabled and not enable mode_3d
 when we are using DSC
 
-We add a helper dpu_encoder_helper_get_dsc_mode() to detect dsc
+We add a helper dpu_encoder_helper_get_dsc() to detect dsc
 enabled and pass this to .setup_intf_cfg()
 
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
  drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys.h     | 11 +++++++++++
  drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_cmd.c |  2 ++
- drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c           |  5 +++--
+ drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c           |  3 ++-
  drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.h           |  2 ++
- 4 files changed, 18 insertions(+), 2 deletions(-)
+ 4 files changed, 17 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys.h b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys.h
-index e7270eb6b84be..fca07ed033172 100644
+index e7270eb6b84be..efb85d595598d 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys.h
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys.h
 @@ -332,6 +332,17 @@ static inline enum dpu_3d_blend_mode dpu_encoder_helper_get_3d_blend_mode(
  	return BLEND_3D_NONE;
  }
  
-+static inline bool dpu_encoder_helper_get_dsc_mode(struct dpu_encoder_phys *phys_enc)
++static inline bool dpu_encoder_helper_get_dsc(struct dpu_encoder_phys *phys_enc)
 +{
 +	struct drm_encoder *drm_enc = phys_enc->parent;
 +	struct msm_drm_private *priv = drm_enc->dev->dev_private;
 +
 +	if (priv->dsc)
-+		return BIT(0) | BIT(1); /* Hardcoding for 2 DSC topology */
++		return priv->dsc->dsc_mask;
 +
 +	return 0;
 +}
@@ -3670,31 +3511,22 @@ index e7270eb6b84be..fca07ed033172 100644
   * dpu_encoder_helper_split_config - split display configuration helper function
   *	This helper function may be used by physical encoders to configure
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_cmd.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_cmd.c
-index aa01698d6b256..8e5c0911734c0 100644
+index 34a6940d12c59..f3f00f4d0193a 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_cmd.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_cmd.c
 @@ -70,6 +70,8 @@ static void _dpu_encoder_phys_cmd_update_intf_cfg(
  	intf_cfg.intf_mode_sel = DPU_CTL_MODE_SEL_CMD;
  	intf_cfg.stream_sel = cmd_enc->stream_sel;
  	intf_cfg.mode_3d = dpu_encoder_helper_get_3d_blend_mode(phys_enc);
-+	intf_cfg.dsc = dpu_encoder_helper_get_dsc_mode(phys_enc);
++	intf_cfg.dsc = dpu_encoder_helper_get_dsc(phys_enc);
 +
  	ctl->ops.setup_intf_cfg(ctl, &intf_cfg);
  }
  
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c
-index 64740ddb983ea..3c79bd9c2fe5b 100644
+index 64740ddb983ea..36831457a91bd 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c
-@@ -118,7 +118,7 @@ static u32 dpu_hw_ctl_get_pending_flush(struct dpu_hw_ctl *ctx)
- 	return ctx->pending_flush_mask;
- }
- 
--static inline void dpu_hw_ctl_trigger_flush_v1(struct dpu_hw_ctl *ctx)
-+static void dpu_hw_ctl_trigger_flush_v1(struct dpu_hw_ctl *ctx)
- {
- 
- 	if (ctx->pending_flush_mask & BIT(MERGE_3D_IDX))
 @@ -519,7 +519,8 @@ static void dpu_hw_ctl_intf_cfg(struct dpu_hw_ctl *ctx,
  
  	intf_cfg |= (cfg->intf & 0xF) << 4;
@@ -3706,44 +3538,44 @@ index 64740ddb983ea..3c79bd9c2fe5b 100644
  		intf_cfg |= (cfg->mode_3d - 0x1) << 20;
  	}
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.h b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.h
-index 806c171e5df21..5dfac5994bd4f 100644
+index 806c171e5df21..9847c9c46d6f9 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.h
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.h
-@@ -39,6 +39,7 @@ struct dpu_hw_stage_cfg {
-  * @mode_3d:               3d mux configuration
+@@ -40,6 +40,7 @@ struct dpu_hw_stage_cfg {
   * @merge_3d:              3d merge block used
   * @intf_mode_sel:         Interface mode, cmd / vid
-+ * @dsc:                   DSC BIT masks
   * @stream_sel:            Stream selection for multi-stream interfaces
++ * @dsc:                   DSC BIT masks
   */
  struct dpu_hw_intf_cfg {
-@@ -46,6 +47,7 @@ struct dpu_hw_intf_cfg {
- 	enum dpu_3d_blend_mode mode_3d;
+ 	enum dpu_intf intf;
+@@ -47,6 +48,7 @@ struct dpu_hw_intf_cfg {
  	enum dpu_merge_3d merge_3d;
  	enum dpu_ctl_mode_sel intf_mode_sel;
-+	unsigned int dsc;
  	int stream_sel;
++	unsigned int dsc;
  };
  
+ /**
 -- 
-2.32.0
+2.34.0
 
 
-From 53b35e2878be54af22a2fadb3e9d704df651646b Mon Sep 17 00:00:00 2001
+From c6d05f093ea9d40aa2035e1e27e6f6a019907816 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 16:24:20 +0530
-Subject: [PATCH 16/22] drm/msm/disp/dpu1: Add DSC support in hw_ctl
+Subject: [PATCH 15/24] drm/msm/disp/dpu1: Add DSC support in hw_ctl
 
 Later gens of hardware have DSC bits moved to hw_ctl, so configure these
 bits so that DSC would work there as well
 
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
- drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c
-index 3c79bd9c2fe5b..8ea9d8dce3f72 100644
+index 36831457a91bd..66b0c44118d86 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c
 @@ -25,6 +25,8 @@
@@ -3765,21 +3597,13 @@ index 3c79bd9c2fe5b..8ea9d8dce3f72 100644
  
 @@ -120,7 +123,6 @@ static u32 dpu_hw_ctl_get_pending_flush(struct dpu_hw_ctl *ctx)
  
- static void dpu_hw_ctl_trigger_flush_v1(struct dpu_hw_ctl *ctx)
+ static inline void dpu_hw_ctl_trigger_flush_v1(struct dpu_hw_ctl *ctx)
  {
 -
  	if (ctx->pending_flush_mask & BIT(MERGE_3D_IDX))
  		DPU_REG_WRITE(&ctx->hw, CTL_MERGE_3D_FLUSH,
  				ctx->pending_merge_3d_flush_mask);
-@@ -128,7 +130,6 @@ static void dpu_hw_ctl_trigger_flush_v1(struct dpu_hw_ctl *ctx)
- 		DPU_REG_WRITE(&ctx->hw, CTL_INTF_FLUSH,
- 				ctx->pending_intf_flush_mask);
- 
--	DPU_REG_WRITE(&ctx->hw, CTL_FLUSH, ctx->pending_flush_mask);
- }
- 
- static inline void dpu_hw_ctl_trigger_flush(struct dpu_hw_ctl *ctx)
-@@ -498,6 +499,9 @@ static void dpu_hw_ctl_intf_cfg_v1(struct dpu_hw_ctl *ctx,
+@@ -498,6 +500,9 @@ static void dpu_hw_ctl_intf_cfg_v1(struct dpu_hw_ctl *ctx,
  	u32 intf_active = 0;
  	u32 mode_sel = 0;
  
@@ -3789,25 +3613,25 @@ index 3c79bd9c2fe5b..8ea9d8dce3f72 100644
  	if (cfg->intf_mode_sel == DPU_CTL_MODE_SEL_CMD)
  		mode_sel |= BIT(17);
  
-@@ -509,6 +513,10 @@ static void dpu_hw_ctl_intf_cfg_v1(struct dpu_hw_ctl *ctx,
+@@ -509,6 +514,10 @@ static void dpu_hw_ctl_intf_cfg_v1(struct dpu_hw_ctl *ctx,
  	if (cfg->merge_3d)
  		DPU_REG_WRITE(c, CTL_MERGE_3D_ACTIVE,
  			      BIT(cfg->merge_3d - MERGE_3D_0));
 +	if (cfg->dsc) {
-+		DPU_REG_WRITE(&ctx->hw, CTL_FLUSH, ctx->pending_flush_mask |  BIT(DSC_IDX));
++		DPU_REG_WRITE(&ctx->hw, CTL_FLUSH, cfg->dsc);
 +		DPU_REG_WRITE(c, CTL_DSC_ACTIVE, cfg->dsc);
 +	}
  }
  
  static void dpu_hw_ctl_intf_cfg(struct dpu_hw_ctl *ctx,
 -- 
-2.32.0
+2.34.0
 
 
-From ebdf2d38ecc040d123c131112352b3c19d9304d6 Mon Sep 17 00:00:00 2001
+From 95b2283f6a85b69be0f96164aa8b6761aaaadb69 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 16:37:34 +0530
-Subject: [PATCH 17/22] drm/msm/disp/dpu1: Add support for DSC in encoder
+Subject: [PATCH 16/24] drm/msm/disp/dpu1: Add support for DSC in encoder
 
 We need to configure the encoder for DSC configuration and calculate DSC
 parameters for the given timing so this patch adds that support by
@@ -3815,11 +3639,11 @@ adding dpu_encoder_prep_dsc() which is invoked when DSC is enabled.
 
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
- drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c | 139 +++++++++++++++++++-
- 1 file changed, 138 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c | 140 +++++++++++++++++++-
+ 1 file changed, 139 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
-index 0e9d3fa1544be..aac51c1bdf941 100644
+index e7ee4cfb8461e..f2ff8a504918e 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
 @@ -21,6 +21,7 @@
@@ -3838,7 +3662,7 @@ index 0e9d3fa1544be..aac51c1bdf941 100644
   * @intfs_swapped:	Whether or not the phys_enc interfaces have been swapped
   *			for partial update right-only cases, such as pingpong
   *			split where virtual pingpong does not generate IRQs
-@@ -181,6 +183,7 @@ struct dpu_encoder_virt {
+@@ -182,6 +184,7 @@ struct dpu_encoder_virt {
  	struct dpu_encoder_phys *cur_master;
  	struct dpu_encoder_phys *cur_slave;
  	struct dpu_hw_pingpong *hw_pp[MAX_CHANNELS_PER_ENC];
@@ -3846,7 +3670,7 @@ index 0e9d3fa1544be..aac51c1bdf941 100644
  
  	bool intfs_swapped;
  
-@@ -977,7 +980,8 @@ static void dpu_encoder_virt_mode_set(struct drm_encoder *drm_enc,
+@@ -972,7 +975,8 @@ static void dpu_encoder_virt_mode_set(struct drm_encoder *drm_enc,
  	struct dpu_hw_blk *hw_ctl[MAX_CHANNELS_PER_ENC];
  	struct dpu_hw_blk *hw_lm[MAX_CHANNELS_PER_ENC];
  	struct dpu_hw_blk *hw_dspp[MAX_CHANNELS_PER_ENC] = { NULL };
@@ -3856,13 +3680,14 @@ index 0e9d3fa1544be..aac51c1bdf941 100644
  	int i, j;
  
  	if (!drm_enc) {
-@@ -1035,6 +1039,13 @@ static void dpu_encoder_virt_mode_set(struct drm_encoder *drm_enc,
+@@ -1030,6 +1034,14 @@ static void dpu_encoder_virt_mode_set(struct drm_encoder *drm_enc,
  		dpu_enc->hw_pp[i] = i < num_pp ? to_dpu_hw_pingpong(hw_pp[i])
  						: NULL;
  
 +	if (priv->dsc) {
 +		num_dsc = dpu_rm_get_assigned_resources(&dpu_kms->rm, global_state,
-+			drm_enc->base.id, DPU_HW_BLK_DSC, hw_dsc, ARRAY_SIZE(hw_dsc));
++							drm_enc->base.id, DPU_HW_BLK_DSC,
++							hw_dsc, ARRAY_SIZE(hw_dsc));
 +		for (i = 0; i < MAX_CHANNELS_PER_ENC; i++)
 +			dpu_enc->hw_dsc[i] = i < num_dsc ? to_dpu_hw_dsc(hw_dsc[i]) : NULL;
 +	}
@@ -3870,7 +3695,7 @@ index 0e9d3fa1544be..aac51c1bdf941 100644
  	cstate = to_dpu_crtc_state(drm_crtc->state);
  
  	for (i = 0; i < num_lm; i++) {
-@@ -1778,10 +1789,132 @@ static void dpu_encoder_vsync_event_work_handler(struct kthread_work *work)
+@@ -1772,10 +1784,132 @@ static void dpu_encoder_vsync_event_work_handler(struct kthread_work *work)
  			nsecs_to_jiffies(ktime_to_ns(wakeup_time)));
  }
  
@@ -4003,7 +3828,7 @@ index 0e9d3fa1544be..aac51c1bdf941 100644
  	bool needs_hw_reset = false;
  	unsigned int i;
  
-@@ -1809,6 +1942,10 @@ void dpu_encoder_prepare_for_kickoff(struct drm_encoder *drm_enc)
+@@ -1803,6 +1937,10 @@ void dpu_encoder_prepare_for_kickoff(struct drm_encoder *drm_enc)
  			dpu_encoder_helper_hw_reset(dpu_enc->phys_encs[i]);
  		}
  	}
@@ -4015,16 +3840,44 @@ index 0e9d3fa1544be..aac51c1bdf941 100644
  
  void dpu_encoder_kickoff(struct drm_encoder *drm_enc)
 -- 
-2.32.0
+2.34.0
 
 
-From bcfc3972ea0ed29e584d30dd6a8ec0525e5ae69d Mon Sep 17 00:00:00 2001
+From aba1b2f2645da0516ada9b1bb2d10a3b6b8aa119 Mon Sep 17 00:00:00 2001
+From: Vinod Koul <vkoul@kernel.org>
+Date: Tue, 19 Oct 2021 22:42:18 +0530
+Subject: [PATCH 17/24] drm/msm: Add missing structure documentation
+
+Somehow documentation for dspp was missed, so add that
+
+Signed-off-by: Vinod Koul <vkoul@kernel.org>
+---
+ drivers/gpu/drm/msm/msm_drv.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/msm/msm_drv.h b/drivers/gpu/drm/msm/msm_drv.h
+index de7cb65bfc522..c4a588ad226ec 100644
+--- a/drivers/gpu/drm/msm/msm_drv.h
++++ b/drivers/gpu/drm/msm/msm_drv.h
+@@ -102,6 +102,7 @@ enum msm_event_wait {
+  * @num_lm:       number of layer mixers used
+  * @num_enc:      number of compression encoder blocks used
+  * @num_intf:     number of interfaces the panel is mounted on
++ * @num_dspp:     number of dspp blocks used
+  */
+ struct msm_display_topology {
+ 	u32 num_lm;
+-- 
+2.34.0
+
+
+From c437800717c823a686155fd412e27cd37aeef222 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 16:37:34 +0530
-Subject: [PATCH 18/22] drm/msm/disp/dpu1: Add support for DSC in topology
+Subject: [PATCH 18/24] drm/msm/disp/dpu1: Add support for DSC in topology
 
 For DSC to work we typically need a 2,2,1 configuration. This should
-suffice for resolutions upto 4k. For more resolutions like 8k this won't
+suffice for resolutions up to 4k. For more resolutions like 8k this won't
 work.
 
 Also, it is better to use 2 LMs and DSC instances as half width results
@@ -4037,14 +3890,15 @@ Co-developed-by: Abhinav Kumar <abhinavk@codeaurora.org>
 Signed-off-by: Abhinav Kumar <abhinavk@codeaurora.org>
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
- drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c | 18 ++++++++++++++++++
+ drivers/gpu/drm/msm/msm_drv.h               |  2 ++
+ 2 files changed, 20 insertions(+)
 
 diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
-index aac51c1bdf941..70f57a0711659 100644
+index f2ff8a504918e..12f58de88ac72 100644
 --- a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
 +++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
-@@ -538,6 +538,8 @@ static struct msm_display_topology dpu_encoder_get_topology(
+@@ -533,6 +533,8 @@ static struct msm_display_topology dpu_encoder_get_topology(
  			struct drm_display_mode *mode)
  {
  	struct msm_display_topology topology = {0};
@@ -4053,7 +3907,7 @@ index aac51c1bdf941..70f57a0711659 100644
  	int i, intf_count = 0;
  
  	for (i = 0; i < MAX_PHYS_ENCODERS_PER_VIRTUAL; i++)
-@@ -572,8 +574,22 @@ static struct msm_display_topology dpu_encoder_get_topology(
+@@ -567,8 +569,24 @@ static struct msm_display_topology dpu_encoder_get_topology(
  	topology.num_enc = 0;
  	topology.num_intf = intf_count;
  
@@ -4062,12 +3916,14 @@ index aac51c1bdf941..70f57a0711659 100644
 +	if (priv && priv->dsc) {
 +		/* In case of Display Stream Compression DSC, we would use
 +		 * 2 encoders, 2 line mixers and 1 interface
-+		 * this is power optimal and can drive upto (including) 4k
++		 * this is power optimal and can drive up to (including) 4k
 +		 * screens
 +		 */
 +		topology.num_enc = 2;
++		topology.num_dsc = 2;
 +		topology.num_intf = 1;
 +		topology.num_lm = 2;
++		priv->dsc->dsc_mask = BIT(0) | BIT(1);
 +	}
 +
  	return topology;
@@ -4076,14 +3932,301 @@ index aac51c1bdf941..70f57a0711659 100644
  static int dpu_encoder_virt_atomic_check(
  		struct drm_encoder *drm_enc,
  		struct drm_crtc_state *crtc_state,
+diff --git a/drivers/gpu/drm/msm/msm_drv.h b/drivers/gpu/drm/msm/msm_drv.h
+index c4a588ad226ec..d6b25d77700e8 100644
+--- a/drivers/gpu/drm/msm/msm_drv.h
++++ b/drivers/gpu/drm/msm/msm_drv.h
+@@ -103,12 +103,14 @@ enum msm_event_wait {
+  * @num_enc:      number of compression encoder blocks used
+  * @num_intf:     number of interfaces the panel is mounted on
+  * @num_dspp:     number of dspp blocks used
++ * @num_dsc:      number of Display Stream Compression (DSC) blocks used
+  */
+ struct msm_display_topology {
+ 	u32 num_lm;
+ 	u32 num_enc;
+ 	u32 num_intf;
+ 	u32 num_dspp;
++	u32 num_dsc;
+ };
+ 
+ /**
 -- 
-2.32.0
+2.34.0
 
 
-From cd493068a65adb8dd9ef52ff7888dced995a66c2 Mon Sep 17 00:00:00 2001
+From 8741a50d7d25908c847d8a578b6a3e71cd4cbb0c Mon Sep 17 00:00:00 2001
+From: Vinod Koul <vkoul@kernel.org>
+Date: Fri, 21 May 2021 16:15:27 +0530
+Subject: [PATCH 19/24] drm/msm/disp/dpu1: Add DSC support in RM
+
+This add the bits in RM to enable the DSC blocks
+
+Signed-off-by: Vinod Koul <vkoul@kernel.org>
+---
+ drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h |  1 +
+ drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c  | 66 +++++++++++++++++++++++++
+ drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h  |  1 +
+ 3 files changed, 68 insertions(+)
+
+diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h b/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h
+index 775bcbda860fa..fd6672efb096b 100644
+--- a/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h
++++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_kms.h
+@@ -146,6 +146,7 @@ struct dpu_global_state {
+ 	uint32_t ctl_to_enc_id[CTL_MAX - CTL_0];
+ 	uint32_t intf_to_enc_id[INTF_MAX - INTF_0];
+ 	uint32_t dspp_to_enc_id[DSPP_MAX - DSPP_0];
++	uint32_t dsc_to_enc_id[DSC_MAX - DSC_0];
+ };
+ 
+ struct dpu_global_state
+diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c
+index f9c83d6e427ad..c9d0fc765aaf7 100644
+--- a/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c
++++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c
+@@ -11,6 +11,7 @@
+ #include "dpu_hw_intf.h"
+ #include "dpu_hw_dspp.h"
+ #include "dpu_hw_merge3d.h"
++#include "dpu_hw_dsc.h"
+ #include "dpu_encoder.h"
+ #include "dpu_trace.h"
+ 
+@@ -75,6 +76,14 @@ int dpu_rm_destroy(struct dpu_rm *rm)
+ 			dpu_hw_intf_destroy(hw);
+ 		}
+ 	}
++	for (i = 0; i < ARRAY_SIZE(rm->dsc_blks); i++) {
++		struct dpu_hw_dsc *hw;
++
++		if (rm->dsc_blks[i]) {
++			hw = to_dpu_hw_dsc(rm->dsc_blks[i]);
++			dpu_hw_dsc_destroy(hw);
++		}
++	}
+ 
+ 	return 0;
+ }
+@@ -221,6 +230,19 @@ int dpu_rm_init(struct dpu_rm *rm,
+ 		rm->dspp_blks[dspp->id - DSPP_0] = &hw->base;
+ 	}
+ 
++	for (i = 0; i < cat->dsc_count; i++) {
++		struct dpu_hw_dsc *hw;
++		const struct dpu_dsc_cfg *dsc = &cat->dsc[i];
++
++		hw = dpu_hw_dsc_init(dsc->id, mmio, cat);
++		if (IS_ERR_OR_NULL(hw)) {
++			rc = PTR_ERR(hw);
++			DPU_ERROR("failed dsc object creation: err %d\n", rc);
++			goto fail;
++		}
++		rm->dsc_blks[dsc->id - DSC_0] = &hw->base;
++	}
++
+ 	return 0;
+ 
+ fail:
+@@ -476,6 +498,7 @@ static int _dpu_rm_reserve_intf(
+ 	}
+ 
+ 	global_state->intf_to_enc_id[idx] = enc_id;
++
+ 	return 0;
+ }
+ 
+@@ -500,6 +523,38 @@ static int _dpu_rm_reserve_intf_related_hw(
+ 	return ret;
+ }
+ 
++static int _dpu_rm_reserve_dsc(struct dpu_rm *rm,
++			       struct dpu_global_state *global_state,
++			       struct drm_encoder *enc,
++			       const struct msm_display_topology *top)
++{
++	struct msm_drm_private *priv;
++	int num_dsc = top->num_dsc;
++	int i;
++
++	priv = enc->dev->dev_private;
++
++	if (!priv)
++		return -EIO;
++
++	/* check if DSC is supported */
++	if (!priv->dsc)
++		return 0;
++
++	/* check if DSC required are allocated or not */
++	for (i = 0; i < num_dsc; i++) {
++		if (global_state->dsc_to_enc_id[i]) {
++			DPU_ERROR("DSC %d is already allocated\n", i);
++			return -EIO;
++		}
++	}
++
++	for (i = 0; i < num_dsc; i++)
++		global_state->dsc_to_enc_id[i] = enc->base.id;
++
++	return 0;
++}
++
+ static int _dpu_rm_make_reservation(
+ 		struct dpu_rm *rm,
+ 		struct dpu_global_state *global_state,
+@@ -526,6 +581,10 @@ static int _dpu_rm_make_reservation(
+ 	if (ret)
+ 		return ret;
+ 
++	ret  = _dpu_rm_reserve_dsc(rm, global_state, enc, &reqs->topology);
++	if (ret)
++		return ret;
++
+ 	return ret;
+ }
+ 
+@@ -567,6 +626,8 @@ void dpu_rm_release(struct dpu_global_state *global_state,
+ 		ARRAY_SIZE(global_state->ctl_to_enc_id), enc->base.id);
+ 	_dpu_rm_clear_mapping(global_state->intf_to_enc_id,
+ 		ARRAY_SIZE(global_state->intf_to_enc_id), enc->base.id);
++	_dpu_rm_clear_mapping(global_state->dsc_to_enc_id,
++		ARRAY_SIZE(global_state->dsc_to_enc_id), enc->base.id);
+ }
+ 
+ int dpu_rm_reserve(
+@@ -640,6 +701,11 @@ int dpu_rm_get_assigned_resources(struct dpu_rm *rm,
+ 		hw_to_enc_id = global_state->dspp_to_enc_id;
+ 		max_blks = ARRAY_SIZE(rm->dspp_blks);
+ 		break;
++	case DPU_HW_BLK_DSC:
++		hw_blks = rm->dsc_blks;
++		hw_to_enc_id = global_state->dsc_to_enc_id;
++		max_blks = ARRAY_SIZE(rm->dsc_blks);
++		break;
+ 	default:
+ 		DPU_ERROR("blk type %d not managed by rm\n", type);
+ 		return 0;
+diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h b/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h
+index 1f12c8d5b8aa0..278d2a510b807 100644
+--- a/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h
++++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_rm.h
+@@ -30,6 +30,7 @@ struct dpu_rm {
+ 	struct dpu_hw_blk *intf_blks[INTF_MAX - INTF_0];
+ 	struct dpu_hw_blk *dspp_blks[DSPP_MAX - DSPP_0];
+ 	struct dpu_hw_blk *merge_3d_blks[MERGE_3D_MAX - MERGE_3D_0];
++	struct dpu_hw_blk *dsc_blks[DSC_MAX - DSC_0];
+ 
+ 	uint32_t lm_max_width;
+ };
+-- 
+2.34.0
+
+
+From 215b842a5763a1c0a5a5ec7dba8160b93e096ce2 Mon Sep 17 00:00:00 2001
+From: Vinod Koul <vkoul@kernel.org>
+Date: Wed, 20 Oct 2021 17:28:41 +0530
+Subject: [PATCH 20/24] drm/msm/dsi: add mode valid callback for dsi_mgr
+
+Add a mode valid callback for dsi_mgr for checking mode being valid in
+case of DSC. For DSC the height and width needs to be multiple of slice,
+so we check that here
+
+Signed-off-by: Vinod Koul <vkoul@kernel.org>
+---
+ drivers/gpu/drm/msm/dsi/dsi.h         |  2 ++
+ drivers/gpu/drm/msm/dsi/dsi_host.c    | 26 ++++++++++++++++++++++++++
+ drivers/gpu/drm/msm/dsi/dsi_manager.c | 12 ++++++++++++
+ 3 files changed, 40 insertions(+)
+
+diff --git a/drivers/gpu/drm/msm/dsi/dsi.h b/drivers/gpu/drm/msm/dsi/dsi.h
+index 569c8ff062ba4..e7affab2fc1e6 100644
+--- a/drivers/gpu/drm/msm/dsi/dsi.h
++++ b/drivers/gpu/drm/msm/dsi/dsi.h
+@@ -115,6 +115,8 @@ int msm_dsi_host_power_on(struct mipi_dsi_host *host,
+ int msm_dsi_host_power_off(struct mipi_dsi_host *host);
+ int msm_dsi_host_set_display_mode(struct mipi_dsi_host *host,
+ 				  const struct drm_display_mode *mode);
++enum drm_mode_status msm_dsi_host_check_dsc(struct mipi_dsi_host *host,
++					    const struct drm_display_mode *mode);
+ struct drm_panel *msm_dsi_host_get_panel(struct mipi_dsi_host *host);
+ unsigned long msm_dsi_host_get_mode_flags(struct mipi_dsi_host *host);
+ struct drm_bridge *msm_dsi_host_get_bridge(struct mipi_dsi_host *host);
+diff --git a/drivers/gpu/drm/msm/dsi/dsi_host.c b/drivers/gpu/drm/msm/dsi/dsi_host.c
+index 6ee8cad68c311..526f152f8115f 100644
+--- a/drivers/gpu/drm/msm/dsi/dsi_host.c
++++ b/drivers/gpu/drm/msm/dsi/dsi_host.c
+@@ -2590,6 +2590,32 @@ int msm_dsi_host_set_display_mode(struct mipi_dsi_host *host,
+ 	return 0;
+ }
+ 
++enum drm_mode_status msm_dsi_host_check_dsc(struct mipi_dsi_host *host,
++					    const struct drm_display_mode *mode)
++{
++	struct msm_dsi_host *msm_host = to_msm_dsi_host(host);
++	struct msm_display_dsc_config *dsc = msm_host->dsc;
++	int pic_width = mode->hdisplay;
++	int pic_height = mode->vdisplay;
++
++	if (!msm_host->dsc)
++		return MODE_OK;
++
++	if (pic_width % dsc->drm->slice_width) {
++		pr_err("DSI: pic_width %d has to be multiple of slice %d\n",
++		       pic_width, dsc->drm->slice_width);
++		return MODE_H_ILLEGAL;
++	}
++
++	if (pic_height % dsc->drm->slice_height) {
++		pr_err("DSI: pic_height %d has to be multiple of slice %d\n",
++		       pic_height, dsc->drm->slice_height);
++		return MODE_V_ILLEGAL;
++	}
++
++	return MODE_OK;
++}
++
+ struct drm_panel *msm_dsi_host_get_panel(struct mipi_dsi_host *host)
+ {
+ 	return of_drm_find_panel(to_msm_dsi_host(host)->device_node);
+diff --git a/drivers/gpu/drm/msm/dsi/dsi_manager.c b/drivers/gpu/drm/msm/dsi/dsi_manager.c
+index 20c4d650fd80c..0ad8a53aaa0ec 100644
+--- a/drivers/gpu/drm/msm/dsi/dsi_manager.c
++++ b/drivers/gpu/drm/msm/dsi/dsi_manager.c
+@@ -579,6 +579,17 @@ static void dsi_mgr_bridge_mode_set(struct drm_bridge *bridge,
+ 		msm_dsi_host_set_display_mode(other_dsi->host, adjusted_mode);
+ }
+ 
++static enum drm_mode_status dsi_mgr_bridge_mode_valid(struct drm_bridge *bridge,
++						      const struct drm_display_info *info,
++						      const struct drm_display_mode *mode)
++{
++	int id = dsi_mgr_bridge_get_id(bridge);
++	struct msm_dsi *msm_dsi = dsi_mgr_get_dsi(id);
++	struct mipi_dsi_host *host = msm_dsi->host;
++
++	return msm_dsi_host_check_dsc(host, mode);
++}
++
+ static const struct drm_connector_funcs dsi_mgr_connector_funcs = {
+ 	.detect = dsi_mgr_connector_detect,
+ 	.fill_modes = drm_helper_probe_single_connector_modes,
+@@ -600,6 +611,7 @@ static const struct drm_bridge_funcs dsi_mgr_bridge_funcs = {
+ 	.disable = dsi_mgr_bridge_disable,
+ 	.post_disable = dsi_mgr_bridge_post_disable,
+ 	.mode_set = dsi_mgr_bridge_mode_set,
++	.mode_valid = dsi_mgr_bridge_mode_valid,
+ };
+ 
+ /* initialize connector when we're connected to a drm_panel */
+-- 
+2.34.0
+
+
+From 429d8fff4a4246fb1f0d0838d000309fa1d0c9de Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 16:45:00 +0530
-Subject: [PATCH 19/22] drm/msm/dsi: Add support for DSC configuration
+Subject: [PATCH 21/24] drm/msm/dsi: Add support for DSC configuration
 
 When DSC is enabled, we need to configure DSI registers accordingly and
 configure the respective stream compression registers.
@@ -4094,8 +4237,8 @@ timing information and configure these registers.
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
  drivers/gpu/drm/msm/dsi/dsi.xml.h  |  10 +++
- drivers/gpu/drm/msm/dsi/dsi_host.c | 123 ++++++++++++++++++++++++++++-
- 2 files changed, 132 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/msm/dsi/dsi_host.c | 113 ++++++++++++++++++++++++++++-
+ 2 files changed, 122 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/msm/dsi/dsi.xml.h b/drivers/gpu/drm/msm/dsi/dsi.xml.h
 index 49b551ad1bff0..c1c85df58c4b4 100644
@@ -4117,10 +4260,10 @@ index 49b551ad1bff0..c1c85df58c4b4 100644
 +
  #endif /* DSI_XML */
 diff --git a/drivers/gpu/drm/msm/dsi/dsi_host.c b/drivers/gpu/drm/msm/dsi/dsi_host.c
-index ba24458c2e38e..86e36a3e97b62 100644
+index 526f152f8115f..8bac365d06109 100644
 --- a/drivers/gpu/drm/msm/dsi/dsi_host.c
 +++ b/drivers/gpu/drm/msm/dsi/dsi_host.c
-@@ -946,6 +946,26 @@ static void dsi_ctrl_config(struct msm_dsi_host *msm_host, bool enable,
+@@ -908,6 +908,20 @@ static void dsi_ctrl_config(struct msm_dsi_host *msm_host, bool enable,
  		dsi_write(msm_host, REG_DSI_CPHY_MODE_CTRL, BIT(0));
  }
  
@@ -4129,12 +4272,6 @@ index ba24458c2e38e..86e36a3e97b62 100644
 +{
 +	if (!dsc || !pic_width || !pic_height) {
 +		pr_err("DSI: invalid input: pic_width: %d pic_height: %d\n", pic_width, pic_height);
-+		return -EINVAL;
-+	}
-+
-+	if ((pic_width % dsc->drm->slice_width) || (pic_height % dsc->drm->slice_height)) {
-+		pr_err("DSI: pic_dim %dx%d has to be multiple of slice %dx%d\n",
-+		       pic_width, pic_height, dsc->drm->slice_width, dsc->drm->slice_height);
 +		return -EINVAL;
 +	}
 +
@@ -4147,7 +4284,7 @@ index ba24458c2e38e..86e36a3e97b62 100644
  static void dsi_timing_setup(struct msm_dsi_host *msm_host, bool is_bonded_dsi)
  {
  	struct drm_display_mode *mode = msm_host->mode;
-@@ -978,7 +998,72 @@ static void dsi_timing_setup(struct msm_dsi_host *msm_host, bool is_bonded_dsi)
+@@ -940,7 +954,68 @@ static void dsi_timing_setup(struct msm_dsi_host *msm_host, bool is_bonded_dsi)
  		hdisplay /= 2;
  	}
  
@@ -4184,11 +4321,7 @@ index ba24458c2e38e..86e36a3e97b62 100644
 +			intf_width = hdisplay;
 +			slice_per_intf = DIV_ROUND_UP(intf_width, dsc->drm->slice_width);
 +
-+			/* If slice_count > slice_per_intf, then use 1
-+			 * This can happen during partial update
-+			 */
-+				dsc->drm->slice_count = 1;
-+
++			dsc->drm->slice_count = 1;
 +			dsc->bytes_in_slice = DIV_ROUND_UP(dsc->drm->slice_width * 8, 8);
 +			total_bytes_per_intf = dsc->bytes_in_slice * slice_per_intf;
 +
@@ -4220,7 +4353,7 @@ index ba24458c2e38e..86e36a3e97b62 100644
  		dsi_write(msm_host, REG_DSI_ACTIVE_H,
  			DSI_ACTIVE_H_START(ha_start) |
  			DSI_ACTIVE_H_END(ha_end));
-@@ -997,8 +1082,40 @@ static void dsi_timing_setup(struct msm_dsi_host *msm_host, bool is_bonded_dsi)
+@@ -959,8 +1034,40 @@ static void dsi_timing_setup(struct msm_dsi_host *msm_host, bool is_bonded_dsi)
  			DSI_ACTIVE_VSYNC_VPOS_START(vs_start) |
  			DSI_ACTIVE_VSYNC_VPOS_END(vs_end));
  	} else {		/* command mode */
@@ -4262,16 +4395,12 @@ index ba24458c2e38e..86e36a3e97b62 100644
  
  		dsi_write(msm_host, REG_DSI_CMD_MDP_STREAM0_CTRL,
  			DSI_CMD_MDP_STREAM0_CTRL_WORD_COUNT(wc) |
-@@ -2074,6 +2191,7 @@ int msm_dsi_host_modeset_init(struct mipi_dsi_host *host,
+@@ -2053,9 +2160,13 @@ int msm_dsi_host_modeset_init(struct mipi_dsi_host *host,
+ {
  	struct msm_dsi_host *msm_host = to_msm_dsi_host(host);
  	const struct msm_dsi_cfg_handler *cfg_hnd = msm_host->cfg_hnd;
- 	struct platform_device *pdev = msm_host->pdev;
 +	struct msm_drm_private *priv;
  	int ret;
- 
- 	msm_host->irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
-@@ -2093,6 +2211,9 @@ int msm_dsi_host_modeset_init(struct mipi_dsi_host *host,
- 	}
  
  	msm_host->dev = dev;
 +	priv = dev->dev_private;
@@ -4281,13 +4410,13 @@ index ba24458c2e38e..86e36a3e97b62 100644
  	if (ret) {
  		pr_err("%s: alloc tx gem obj failed, %d\n", __func__, ret);
 -- 
-2.32.0
+2.34.0
 
 
-From 9385236c02b71c75fd8f7bd7bd338e42d1ec58b5 Mon Sep 17 00:00:00 2001
+From c4a39b43490a450f3ddcbf61c71f23ea6ab7d0b9 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Fri, 21 May 2021 16:45:00 +0530
-Subject: [PATCH 20/22] drm/msm/dsi: Pass DSC params to drm_panel
+Subject: [PATCH 22/24] drm/msm/dsi: Pass DSC params to drm_panel
 
 When DSC is enabled, we need to pass the DSC parameters to panel driver
 as well, so add a dsc parameter in panel and set it when DSC is enabled
@@ -4299,19 +4428,15 @@ Signed-off-by: Vinod Koul <vkoul@kernel.org>
  2 files changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/msm/dsi/dsi_host.c b/drivers/gpu/drm/msm/dsi/dsi_host.c
-index 86e36a3e97b62..097827a6149cb 100644
+index 8bac365d06109..5452de0408669 100644
 --- a/drivers/gpu/drm/msm/dsi/dsi_host.c
 +++ b/drivers/gpu/drm/msm/dsi/dsi_host.c
-@@ -2192,6 +2192,7 @@ int msm_dsi_host_modeset_init(struct mipi_dsi_host *host,
+@@ -2161,11 +2161,25 @@ int msm_dsi_host_modeset_init(struct mipi_dsi_host *host,
+ 	struct msm_dsi_host *msm_host = to_msm_dsi_host(host);
  	const struct msm_dsi_cfg_handler *cfg_hnd = msm_host->cfg_hnd;
- 	struct platform_device *pdev = msm_host->pdev;
  	struct msm_drm_private *priv;
 +	struct drm_panel *panel;
  	int ret;
- 
- 	msm_host->irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
-@@ -2211,8 +2212,21 @@ int msm_dsi_host_modeset_init(struct mipi_dsi_host *host,
- 	}
  
  	msm_host->dev = dev;
 +	panel = msm_dsi_host_get_panel(&msm_host->base);
@@ -4352,13 +4477,13 @@ index 4602f833eb51d..eb8ae9bf32eda 100644
  
  void drm_panel_init(struct drm_panel *panel, struct device *dev,
 -- 
-2.32.0
+2.34.0
 
 
-From c80e14d73a4b710c15cc2ac5cad35d66af7921c2 Mon Sep 17 00:00:00 2001
+From 500c9d9a1f31f854ff6fb00d54b0d2d8d9ad5a45 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Wed, 4 Mar 2020 11:22:14 +0530
-Subject: [PATCH 21/22] drm: panel: sw43408: Add DSC support
+Subject: [PATCH 23/24] drm: panel: sw43408: Add DSC support
 
 Signed-off-by: Vinod Koul <vkoul@kernel.org>
 ---
@@ -4442,13 +4567,13 @@ index e6192df05a7c3..bbc77a5c2b5cb 100644
  }
  
 -- 
-2.32.0
+2.34.0
 
 
-From 7b8fcc2fcf1792a035ef35715a7db133a8d22635 Mon Sep 17 00:00:00 2001
+From a6c40867110a2c08d8f6c14c3a1e949948b3cf07 Mon Sep 17 00:00:00 2001
 From: Vinod Koul <vkoul@kernel.org>
 Date: Wed, 6 Oct 2021 10:28:11 +0530
-Subject: [PATCH 22/22] HACK: hack for old fw
+Subject: [PATCH 24/24] HACK: hack for old fw
 
 without this on modetest the kernel gets a panic
 
@@ -4458,7 +4583,7 @@ Signed-off-by: Vinod Koul <vkoul@kernel.org>
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/gpu/drm/msm/adreno/a6xx_gpu.c b/drivers/gpu/drm/msm/adreno/a6xx_gpu.c
-index 40c9fef457a49..0e25488d2199b 100644
+index 78aad5216a613..6c08c1c9b193a 100644
 --- a/drivers/gpu/drm/msm/adreno/a6xx_gpu.c
 +++ b/drivers/gpu/drm/msm/adreno/a6xx_gpu.c
 @@ -800,6 +800,8 @@ static bool a6xx_ucode_check_version(struct a6xx_gpu *a6xx_gpu,
@@ -4471,5 +4596,5 @@ index 40c9fef457a49..0e25488d2199b 100644
  		if ((buf[0] & 0xfff) >= 0x095) {
  			ret = true;
 -- 
-2.32.0
+2.34.0
 
