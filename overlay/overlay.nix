@@ -59,7 +59,6 @@ in
     bootlogd = callPackage ./bootlogd {};
 
     payload-dumper-go = callPackage ./payload-dumper-go { };
-    qmic = callPackage ./qmic { };
 
     qrtr = callPackage ./qrtr/qrtr.nix { };
     qmic = callPackage ./qrtr/qmic.nix { };
