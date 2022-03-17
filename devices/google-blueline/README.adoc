@@ -18,3 +18,39 @@ For the time being, customizing the kernel command-line requires editing the
 ```
 
 > if you do `fastboot oem uart help` it gives you the usage
+
+=== Flashing instructions
+
+1. Flash radio
+2. Flash boot/recovery: SPB5.210812.002
+3. Boot into bootloader
+4. "fastboot reboot fastboot" (boots into fastbootd)
+5. Flash your system partition "fastboot flash system /nix/store/system.img"
+6. Flash boot (mobile-nixos)
+2. Boot TWRP
+3. Flash system
+4. Flash mobile-nixos boot
+
+=== Bootloader notes
+
+* 12.0.0 (SP1A.210812.015, Oct 2021)
+
+TODO: maybe support exporting a "supportedAndroidBootloader" attribute?
+
+# TODO:
+ try "fastboot boot --header-version X"
+
+# TODO: Wtf is this?
+```
+$ fastboot --help 
+...
+ gsi wipe|disable           Wipe or disable a GSI installation (fastbootd only).
+  wipe-super [SUPER_EMPTY]   Wipe the super partition. This will reset it to                                                                                                                                                                                                                                                                                                                  
+                            contain an empty set of default dynamic partitions.
+
+ [create|delete|resize]-logical-partition
+ snapshots?
+ "fetch" ugh, dd with it's part semantics?
+
+
+```
