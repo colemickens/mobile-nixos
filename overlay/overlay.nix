@@ -68,6 +68,7 @@ in
     rmtfs = callPackage ./qrtr/rmtfs.nix { };
 
     libqmi = callPackage ./libqmi {};
+    libqrtr-glib = callPackage ./libqrtr-glib {};
 
     #
     # Hacks
