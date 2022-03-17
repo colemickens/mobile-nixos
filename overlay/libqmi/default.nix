@@ -27,13 +27,14 @@ in stdenv.mkDerivation rec {
     meson ninja pkg-config
     python3 gobject-introspection gtk-doc
   ];
-  
+
   buildInputs = [
     glib libgudev libmbim libqrtr-glib
   ];
 
   mesonFlags = [
     "-Dintrospection=enabled"
+    "-Dqrtr=enabled"
     "-Dgtk_doc=false"
     "-Dbash_completion=false"
     "-Dman=disabled"
