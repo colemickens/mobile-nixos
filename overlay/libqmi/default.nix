@@ -34,7 +34,8 @@ in stdenv.mkDerivation rec {
 
   mesonFlags = [
     "-Dintrospection=enabled"
-    "-Dqrtr=enabled"
+    #"-Dqrtr=enabled"
+    "-Dqrtr=disabled"
     "-Dgtk_doc=false"
     "-Dbash_completion=false"
     "-Dman=disabled"
