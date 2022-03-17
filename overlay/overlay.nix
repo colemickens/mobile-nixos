@@ -67,6 +67,8 @@ in
     pd-mapper = callPackage ./qrtr/pd-mapper.nix { };
     rmtfs = callPackage ./qrtr/rmtfs.nix { };
 
+    libqmi = callPackage ./libqmi {};
+
     #
     # Hacks
     # -----
@@ -113,11 +115,11 @@ in
         "--enable-plugin-qcom-soc"
       ];
     });
-    libqmi = super.libqmi.overrideDerivation (super: {
-      configureFlags = super.configureFlags ++ [
-        "--enable-qrtr"
-      ];
-    });
+    # libqmi = super.libqmi.overrideDerivation (super: {
+    #   configureFlags = super.configureFlags ++ [
+    #     "--enable-qrtr"
+    #   ];
+    # });
 
     # Things specific to mobile-nixos.
     # Not necessarily internals, but they probably won't go into <nixpkgs>.
