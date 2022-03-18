@@ -1,6 +1,26 @@
 { config, pkgs, ... }:
 
-{
+let
+  zstdify = f: builtins.trace f pkgs.runCommandNoCC "${builtins.baseNameOf f}.zstd"
+    {nativeBuildInputs=[pkgs.zstd];}
+  ''
+    set -x
+    zstd "${f}" > $out
+  '';
+
+  upstream = import ./firmware-vendor/upstream.nix {
+    fetchurl = pkgs.fetchurl;
+  };
+  flashScript = pkgs.substituteAll {
+    name = "blueline-flash.sh";
+    src = ./flash.sh;
+    VENDOR_URL = upstream.url;
+    BOOTFS_ZSTD = zstdify config.mobile.outputs.android.android-bootimg.outPath;
+    ROOTFS_ZSTD = zstdify "${config.mobile.outputs.generatedFilesystems.rootfs}/${config.mobile.outputs}";
+    BOOTFS_DEST = config.mobile.system.android.boot_partition_destination;
+    ROOTFS_DEST = config.mobile.system.android.system_partition_destination;
+  };
+in {
   mobile.device.name = "google-blueline";
   mobile.device.identity = {
     name = "Pixel 3";
@@ -31,6 +51,8 @@
       pagesize = "4096";
     };
   };
+  
+  system.build.blueline-flash-script = flashScript;
 
   mobile.boot.stage-1 = {
     kernel.package = pkgs.callPackage ./kernel-mainline { };
