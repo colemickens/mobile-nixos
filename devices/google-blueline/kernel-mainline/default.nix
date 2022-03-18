@@ -39,6 +39,6 @@ mobile-nixos.kernel-builder rec {
   '';
 
   isModular = false;
-  isCompressed = "xz";
+  isCompressed = "gz";
   kernelFile = "Image.${isCompressed}-dtb";
 }
