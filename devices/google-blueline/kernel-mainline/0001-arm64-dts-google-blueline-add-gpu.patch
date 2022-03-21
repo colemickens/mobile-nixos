@@ -1,0 +1,25 @@
+From c4ceeb766dfc3fd328eb881db39fe58f8ca12216 Mon Sep 17 00:00:00 2001
+From: Cole Mickens <cole.mickens@gmail.com>
+Date: Mon, 21 Mar 2022 00:30:15 -0700
+Subject: [PATCH] arm64: dts: google-blueline: add gpu
+
+---
+ arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
+index e0dd41240045..1febdddcbac6 100644
+--- a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
++++ b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
+@@ -690,6 +690,8 @@ pinconf-rx {
+ };
+ 
+ &gpu {
++	status = "okay";
++
+ 	zap-shader {
+ 		memory-region = <&gpu_mem>;
+ 		firmware-name = "qcom/sdm845/pixel3/a630_zap.mbn";
+-- 
+2.35.1
+

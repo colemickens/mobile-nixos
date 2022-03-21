@@ -1,25 +1,19 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   zstdify = f: builtins.trace f pkgs.runCommandNoCC "${builtins.baseNameOf f}.zstd"
     {nativeBuildInputs=[pkgs.zstd];}
   ''
     set -x
-    zstd "${f}" > $out
+    zstd "${f}" -o $out
   '';
 
-  upstream = import ./firmware-vendor/upstream.nix {
-    fetchurl = pkgs.fetchurl;
-  };
-  flashScript = pkgs.substituteAll {
-    name = "blueline-flash.sh";
-    src = ./flash.sh;
-    VENDOR_URL = upstream.url;
-    BOOTFS_ZSTD = zstdify config.mobile.outputs.android.android-bootimg.outPath;
-    ROOTFS_ZSTD = zstdify "${config.mobile.outputs.generatedFilesystems.rootfs}/${config.mobile.outputs}";
-    BOOTFS_DEST = config.mobile.system.android.boot_partition_destination;
-    ROOTFS_DEST = config.mobile.system.android.system_partition_destination;
-  };
+  flashScript = p: args: pkgs.substituteAll ({
+    name = "flash-${p}.sh";
+    src = ./. + "/scripts/flash-${p}.sh";
+    isExecutable = true;
+  } // (builtins.trace args args));
+
 in {
   mobile.device.name = "google-blueline";
   mobile.device.identity = {
@@ -52,20 +46,30 @@ in {
     };
   };
   
-  system.build.blueline-flash-script = flashScript;
+  system.build.flash-boot = flashScript "boot" {
+    bootfs_zstd = zstdify config.mobile.outputs.android.android-bootimg.outPath;
+    bootfs_dest = config.mobile.system.android.boot_partition_destination;
+    firmware = config.mobile.device.firmware;
+  };
+  system.build.flash-system = flashScript "system" {
+    rootfs_zstd = zstdify (let r=config.mobile.outputs.generatedFilesystems.rootfs; in "${r}/${r.filename}");
+    rootfs_dest = config.mobile.system.android.system_partition_destination;
+  };
+
+  hardware.enableRedistributableFirmware = true;
+  hardware.firmware = lib.mkBefore [ config.mobile.device.firmware ];
 
   mobile.boot.stage-1 = {
     kernel.package = pkgs.callPackage ./kernel-mainline { };
     compression = "xz";
+    firmware = [
+      config.mobile.device.firmware
+    ];
   };
 
   mobile.device.firmware = pkgs.callPackage ./firmware-mainline {
     vendor-firmware-files = pkgs.callPackage ./firmware-vendor { };
   };
-
-  mobile.boot.stage-1.firmware = [
-    config.mobile.device.firmware
-  ];
 
   boot.kernelParams = [
     # Extracted from an Android boot image
