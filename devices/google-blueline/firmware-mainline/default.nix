@@ -9,26 +9,33 @@ runCommandNoCC "google-blueline-firmware" {
   src = firmwareLinuxNonfree;
 } ''
   # Firmware from the vendor image
-  mkdir -p $out/lib/firmware/qcom/sdm845/blueline
+  pixel3fw="$out/lib/firmware/qcom/sdm845/pixel3"
+  mkdir -p $pixel3fw
 
   find ${vendor-firmware-files}
 
-  cp -vt $out/lib/firmware/qcom/sdm845/blueline ${vendor-firmware-files}/lib/firmware/*adsp*
-  cp -vt $out/lib/firmware/qcom/sdm845/blueline ${vendor-firmware-files}/lib/firmware/*cdsp*
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*adsp*
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*cdsp*
+  
+  # copied from pmos
+  # ipa_fws.mbn # nfc
+  # slpi.mbn # neural core
+  # venus.mbn # video hardware ???
+  # wlanmdsp.bin # ????
 
   # GPU (mainly)
-  cp -vt $out/lib/firmware/qcom/sdm845/blueline ${vendor-firmware-files}/lib/firmware/*a630*
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*a630*
 
   # Modem stuff
-  cp -vt $out/lib/firmware/qcom/sdm845/blueline ${vendor-firmware-files}/lib/firmware/*mba*
-  cp -vt $out/lib/firmware/qcom/sdm845/blueline ${vendor-firmware-files}/lib/firmware/*modem*
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*mba*
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*modem*
 
   # Touch panel
-  cp -vt $out/lib/firmware/ ${vendor-firmware-files}/lib/firmware/ftm5*.ftb
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/ftm5*.ftb
 
   (
     cd $out/lib/firmware/qcom
-    for f in sdm845/blueline/*; do
+    for f in sdm845/pixel3/*; do
      ln -sf $f
     done
   )

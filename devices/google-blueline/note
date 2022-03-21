@@ -1,0 +1,66 @@
+
+dsi_err_worker: status=4
+
+
+msm_dsi_host_cmd_rx:Invalid response cmd
+
+[Firmware Bug]: Kernel image misaligned at boot, please fix your bootloader!
+
+
+
+
+[    1.981219] [ FTS ] Fw Auto Update is starting...
+[    1.982494] [ FTS ] fts_crc_check: Verifying if Config CRC Error...
+[    1.982502] [ FTS ] System resetting...
+[    2.001636] SS: fts_interrupt_handler
+[    2.001869] [ FTS ] fts_controller_ready_event_handler: Received event 03 00 00 00 00 00 00 00
+[    2.001888] [ FTS ] fts_mode_handler: Sense ON!
+[    2.001996] SS: fts_interrupt_handler
+[    2.002394] [ FTS ] fts_status_event_handler: Mutual negative detect Force cal = 01 00 00 00 00 01
+[    2.115970] [ FTS ] pollForEvent: ERROR 80000007
+[    2.120651] [ FTS ] fts_system_reset: ERROR 80000007
+[    2.144811] SS: fts_interrupt_handler
+[    2.145050] [ FTS ] fts_controller_ready_event_handler: Received event 03 00 00 00 00 00 00 00
+[    2.145068] [ FTS ] fts_mode_handler: Sense ON!
+[    2.145175] SS: fts_interrupt_handler
+[    2.145574] [ FTS ] fts_status_event_handler: Mutual negative detect Force cal = 01 00 00 00 00 01
+[    2.270558] [ FTS ] pollForEvent: ERROR 80000007
+[    2.275224] [ FTS ] fts_system_reset: ERROR 80000007
+[    2.299452] SS: fts_interrupt_handler
+[    2.299678] [ FTS ] fts_controller_ready_event_handler: Received event 03 00 00 00 00 00 00 00
+[    2.299694] [ FTS ] fts_mode_handler: Sense ON!
+[    2.299799] SS: fts_interrupt_handler
+[    2.300196] [ FTS ] fts_status_event_handler: Mutual negative detect Force cal = 01 00 00 00 00 01
+[    2.424888] [ FTS ] pollForEvent: ERROR 80000007
+[    2.429555] [ FTS ] fts_system_reset: ERROR 80000007
+[    2.434569] [ FTS ] fts_system_reset...failed after 3 attempts: ERROR 80000B07
+[    2.441855] [ FTS ] fts_crc_check: Error while executing system reset! ERROR 80000B07
+[    2.449748] [ FTS ] fts_fw_update: NO CRC Error or Impossible to read CRC register!
+[    2.449752] [ FTS ] Reading Fw file...
+[    2.449755] [ FTS ] getFWdata starting ...
+[    2.449759] [ FTS ] Read FW from BIN file ftm5_fw.ftb !
+[   13.433008] Freeing initrd memory: 43836K
+[   13.433330] fts 2-0049: Direct firmware load for ftm5_fw.ftb failed with error -2
+[   13.433347] [ FTS ] getFWdata: No File found! ERROR 80000008
+[   13.436460] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[   13.439072] [ FTS ] readFwFile: impossible retrieve FW... ERROR 80070000
+[   13.443022] ALSA device list:
+[   13.445884] [ FTS ] flashProcedure: ERROR 82070008
+[   13.445893]   No soundcards found.
+[   13.450740] [ FTS ] fts_fw_update: firmware file not found. Bypassing update.
+[   13.450749] [ FTS ] fts_mode_handler: Sense ON!
+[   13.459705] SS: fts_interrupt_handler
+[   13.459708] [ FTS ] Fw Update Finished! error = 00000000
+[   13.467272] Freeing unused kernel memory: 3840K
+[   13.489719] Run /init as init process
+[   13.489727]   with arguments:
+[   13.489731]     /init
+[   13.489734]   with environment:
+[   13.489736]     HOME=/
+[   13.489738]     TERM=linux
+[   14.316164] Bluetooth: hci0: unexpected event 0xff length: 3 > 0
+[   14.333379] Bluetooth: hci0: QCA Downloading qca/crnv21.bin
+[   14.337560] Bluetooth: hci0: unexpected event 0xff length: 3 > 0
+[   14.341386] Bluetooth: hci0: unexpected event 0xff length: 3 > 0
+[   14.345213] Bluetooth: hci0: unexpected event 0xff length: 3 > 0
+
