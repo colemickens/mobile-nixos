@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "flakes-compat": {
+    "flake-compat": {
       "flake": false,
       "locked": {
         "lastModified": 1641205782,
@@ -33,7 +33,7 @@
     },
     "root": {
       "inputs": {
-        "flakes-compat": "flakes-compat",
+        "flake-compat": "flake-compat",
         "nixpkgs": "nixpkgs"
       }
     }
