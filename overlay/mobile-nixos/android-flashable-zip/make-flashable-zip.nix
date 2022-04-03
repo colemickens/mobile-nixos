@@ -24,6 +24,8 @@ runCommandNoCC name {
     ${copyFiles}
     cp ${update-script} update-script.rb
     cp ${android-flashable-zip-binaries}/bin/update-binary META-INF/com/google/android/update-binary
+    echo "" > android-info.txt
     zip $out $(find | sort)
+    du -hs $out
   )
 ''

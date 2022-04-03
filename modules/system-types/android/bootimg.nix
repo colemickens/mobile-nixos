@@ -15,7 +15,9 @@ let
 in
 pkgs.runCommandNoCC name {
   nativeBuildInputs = with buildPackages; [
-    mkbootimg
+    android-tools
+    # mkbootimg
+    # TODO: dt is meaningless with android-tools
     dtbTool
   ];
 } ''
@@ -24,8 +26,12 @@ pkgs.runCommandNoCC name {
   PS4=" $ "
   set -x
   mkbootimg \
+    ${optionalString (bootimg.header_version != null) "--header_version ${toString bootimg.header_version}"} \
+    ${optionalString (bootimg.os_version != null) "--os_version ${bootimg.os_version}"} \
+    ${optionalString (bootimg.board != null) "--board ${bootimg.board}"} \
     --kernel  ${kernel} \
     ${optionalString (bootimg.dt != null) "--dt ${bootimg.dt}"} \
+    ${optionalString (bootimg.dtb != null) "--dtb ${bootimg.dtb}"} \
     --ramdisk ${initrd} \
     --cmdline       "${cmdline}" \
     --base           ${bootimg.flash.offset_base   } \

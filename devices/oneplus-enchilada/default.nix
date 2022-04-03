@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
-{
+let
+  kernel_sdm845 = pkgs.callPackage ../google-blueline/kernel-sdm845 { isCompressed = "gz"; };
+in {
   mobile.device.name = "oneplus-enchilada";
   mobile.device.identity = {
     name = "OnePlus 6";
@@ -17,7 +19,7 @@
 
   mobile.boot.stage-1 = {
     compression = "xz";
-    kernel.package = pkgs.callPackage ./kernel { };
+    kernel.package = kernel_sdm845;
     firmware = [
       config.mobile.device.firmware
     ];

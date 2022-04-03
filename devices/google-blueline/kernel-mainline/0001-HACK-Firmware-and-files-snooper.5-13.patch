@@ -1,0 +1,47 @@
+From 1cbbe0958cde68bc26c17cb72ffbe3ac112a0c9a Mon Sep 17 00:00:00 2001
+From: Samuel Dionne-Riel <samuel@dionne-riel.com>
+Date: Sun, 20 Jun 2021 22:04:19 -0400
+Subject: [PATCH] [HACK] Firmware and files snooper
+
+---
+ drivers/base/firmware_loader/main.c | 4 ++++
+ fs/open.c                           | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/drivers/base/firmware_loader/main.c b/drivers/base/firmware_loader/main.c
+index 4fdb8219cd083..31a64a9b0d5da 100644
+--- a/drivers/base/firmware_loader/main.c
++++ b/drivers/base/firmware_loader/main.c
+@@ -521,6 +521,8 @@ fw_get_filesystem_firmware(struct device *device, struct fw_priv *fw_priv,
+ 			break;
+ 		}
+ 
++		printk("[TRACE] fw_get_filesystem_firmware(); // %s\n", path);
++
+ 		fw_priv->size = 0;
+ 
+ 		/*
+@@ -805,6 +807,8 @@ _request_firmware(const struct firmware **firmware_p, const char *name,
+ 		goto out;
+ 	}
+ 
++	printk("[TRACE] _request_firmware(); // %s\n", name);
++
+ 	ret = _request_firmware_prepare(&fw, name, device, buf, size,
+ 					offset, opt_flags);
+ 	if (ret <= 0) /* error or already assigned */
+diff --git a/fs/open.c b/fs/open.c
+index e53af13b5835f..1bc7e96f8004b 100644
+--- a/fs/open.c
++++ b/fs/open.c
+@@ -1145,6 +1145,7 @@ struct file *file_open_name(struct filename *name, int flags, umode_t mode)
+  */
+ struct file *filp_open(const char *filename, int flags, umode_t mode)
+ {
++	printk("[TRACE] filp_open(); // %s\n", filename);
+ 	struct filename *name = getname_kernel(filename);
+ 	struct file *file = ERR_CAST(name);
+ 	
+-- 
+2.29.2
+

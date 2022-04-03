@@ -146,6 +146,34 @@ in
           description = "Path to a flattened device tree to pass as --dt to mkbootimg";
           internal = true;
         };
+          
+        dtb = lib.mkOption {
+          type = types.nullOr types.path;
+          default = null;
+          description = "Path to a flattened device tree to pass as --dtb to mkbootimg";
+          internal = true;
+        };
+
+        board = lib.mkOption {
+          type = types.nullOr types.str;
+          default = null;
+          description = "bootimg board";
+          internal = true;
+        };
+          
+        header_version = lib.mkOption {
+          type = types.nullOr types.int;
+          default = null;
+          description = "bootimg header version";
+          internal = true;
+        };
+
+        os_version = lib.mkOption {
+          type = types.nullOr types.str;
+          default = null;
+          description = "bootimg os version";
+          internal = true;
+        };
 
         flash = lib.attrsets.genAttrs [
           "offset_base"
