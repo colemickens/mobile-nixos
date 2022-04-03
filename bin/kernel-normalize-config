@@ -94,7 +94,7 @@ Dir.chdir(ROOT) do
   ].shelljoin}`.strip
 
   # We "cat" into the file to ensure we don't copy the store path access rights.
-  File.write(KCONF_FILE, File.read(result))
+  File.write(KCONF_FILE, File.read(result+'/.config'))
 end
 
 # vim: ft=ruby

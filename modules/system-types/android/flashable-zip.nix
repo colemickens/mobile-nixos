@@ -10,6 +10,10 @@ let
   inherit (pkgs.mobile-nixos) make-flashable-zip;
 
   # Fragments that will be re-used in the flashable zip builds
+  
+  android-info-txt = builtins.writeText "android-info.txt" ''
+    require board=${builtins.toJSON config.mobile.system.android.device_name}
+  '';
 
   android-flashable-fragment-assertDevice =
     if config.mobile.system.android.device_name == null then ""

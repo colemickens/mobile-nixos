@@ -6,14 +6,15 @@
 }:
 
 mobile-nixos.kernel-builder rec {
-  version = "5.16.0-rc5";
-  modDirVersion = "5.16.0-rc5";
+  # https://gitlab.com/sdm845-mainline/linux/-/tree/sdm845/5.18-dev
+  version = "5.17.0";
+  modDirVersion = "5.17.0";
   configfile = ./config.aarch64;
   src = fetchFromGitLab {
     owner = "sdm845-mainline";
     repo = "linux";
-    rev = "9ed86f14d0718d81a55708abe5355fd2a8a09b8d";
-    sha256 = "sha256-/eBwyhFmBQ0yvbUQ3gv5lNTW7OE0SrwZdy9wVz6lOSA=";
+    rev = "452e02d876234a43cfd9256134ad115b3674e47c";
+    sha256 = "sha256-1fp3zH8WG7RGd7C58HX+LVI+8qpeDwxDmmePVpUQ4ls=";
   };
 
   patches = [

@@ -75,7 +75,7 @@ in
         CRYPTO_HMAC = yes;
         CRYPTO_SHA256 = yes;
         SYSFS_DEPRECATED = no;
-        UEVENT_HELPER = no;
+        # UEVENT_HELPER = no;
         FW_LOADER_USER_HELPER = no;
         FW_LOADER_USER_HELPER_FALLBACK = no;
         BLK_DEV_BSG = yes;
