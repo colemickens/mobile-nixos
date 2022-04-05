@@ -4,11 +4,11 @@ Date: Mon, 21 Mar 2022 00:30:15 -0700
 Subject: [PATCH] dtb fixups
 
 ---
- .../boot/dts/qcom/sdm845-google-blueline.dts  | 31 ++++++++++++++-----
- 1 file changed, 24 insertions(+), 7 deletions(-)
+ .../boot/dts/qcom/sdm845-google-blueline.dts  | 33 ++++++++++++++-----
+ 1 file changed, 25 insertions(+), 8 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
-index e0dd41240045..c4be4c863116 100644
+index e0dd41240045..8dbb4ea3a292 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
 +++ b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
 @@ -177,9 +177,9 @@ sde_pmgpio_suspend: sde_pmgpio_suspend {
@@ -19,7 +19,7 @@ index e0dd41240045..c4be4c863116 100644
 +	status = "okay";
  
 -	firmware-name = "qcom/sdm845/pixel3/adsp.mbn";
-+	firmware-name = "qcom/sdm845/pixel3/adsp.mdt";
++	// firmware-name = "qcom/sdm845/pixel3/adsp.mdt";
  };
  
  &apps_rsc {
@@ -30,7 +30,7 @@ index e0dd41240045..c4be4c863116 100644
 -	status = "disabled";
 -	firmware-name = "qcom/sdm845/pixel3/cdsp.mbn";
 +	status = "okay";
-+	firmware-name = "qcom/sdm845/pixel3/cdsp.mdt";
++	// firmware-name = "qcom/sdm845/pixel3/cdsp.mdt";
  };
  
  &gpi_dma0 {
@@ -39,7 +39,7 @@ index e0dd41240045..c4be4c863116 100644
  		st,regulator_dvdd = "vdd";
  		st,regulator_avdd = "avdd";
 -		/* todo  st,firmware_name = "ftm4_fw.ftb"; */
-+		st,firmware_name = "qcom/sdm845/pixel3/ftm5_fw.ftb";
++		// st,firmware_name = "qcom/sdm845/pixel3/ftm5_fw.ftb";
  	};
  };
  
@@ -53,7 +53,7 @@ index e0dd41240045..c4be4c863116 100644
 +		//firmware-name = "qcom/sdm845/pixel3/crnv2.bin";
 +		
 +		// this one forces "qca/qcom" onto the front and our fw puts it there now
-+		firmware-name = "crnv21.bin";
++		// firmware-name = "crnv21.bin";
  	};
  };
  
@@ -71,7 +71,7 @@ index e0dd41240045..c4be4c863116 100644
  	zap-shader {
  		memory-region = <&gpu_mem>;
 -		firmware-name = "qcom/sdm845/pixel3/a630_zap.mbn";
-+		firmware-name = "qcom/sdm845/pixel3/a630_zap.mdt";
++		// firmware-name = "qcom/sdm845/pixel3/a630_zap.mdt";
  	};
  };
  
@@ -80,9 +80,10 @@ index e0dd41240045..c4be4c863116 100644
 +};
 +
  &mss_pil {
- 	status = "disabled";
+-	status = "disabled";
 -	firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mbn";
-+	firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mdt";
++	status = "okay";
++	// firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mdt";
  };
  
  &dsi0 {

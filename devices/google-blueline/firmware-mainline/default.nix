@@ -1,68 +1,89 @@
 { runCommandNoCC
+, lib
 , firmwareLinuxNonfree
+, mobile-nixos
 , wireless-regdb
 , vendor-firmware-files
 }:
 
+let
+  pils = "${mobile-nixos.pil-squasher}/bin/pil-squasher";
+  
+  firmware-oem = "mobile-nixos"; # TODO do the kernel param side
+in
+  
 # The minimum set of firmware files required for the device.
 runCommandNoCC "google-blueline-firmware" {
+  version = vendor-firmware-files.version;
   src = firmwareLinuxNonfree;
+  nativeBuildInputs = [ mobile-nixos.pil-squasher ];
+  meta.license = [ lib.licenses.unfree ];
 } ''
   # Firmware from the vendor image
+    
+  # general dumping dir
   pixel3fw="$out/lib/firmware/qcom/sdm845/pixel3"
-  qcomfw="$out/lib/firmware/qca/qcom"
-  qcafw="$out/lib/firmware/qca"
-  gpu_qcomfw="$out/lib/firmware/qcom"
-  venusfw="$out/lib/firmware/qcom/venus-5.2"
   mkdir -p $pixel3fw
-  mkdir -p $qcomfw
-  mkdir -p $qcafw
-  mkdir -p $gpu_qcomfw
-  mkdir -p $venusfw
 
+  # TODO:   # sleep 100  # slpi.mbn # neural core    # wlanmdsp.bin # ????
   find ${vendor-firmware-files} | sort
-  # sleep 100
 
-  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*adsp*
-  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*cdsp*
+  # CIRRUS
+  # cs40l20.bin
+  # cs40l20.wmfw
   
-  # copied from pmos
-  # ipa_fws.mbn # nfc
-  # slpi.mbn # neural core
-  # venus.mbn # video hardware ???
-  # wlanmdsp.bin # ????
+  # HAPTICS
+  # drv2625.bin
+    
+  # ADSP/CDSP = Qualcomm "application DSP" (Compute DSP) + Audio DSP
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*adsp*.{mbn,jsn}
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*cdsp*.{mbn,jsn}
   
-  # video accel
-  # venus
+  # VENUS - video accel
+  venusfw="$out/lib/firmware/qcom/venus-5.2"
+  mkdir -p $venusfw
   cp -vt "$venusfw" ${vendor-firmware-files}/lib/firmware/*venus*
 
-  # GPU (mainly)
-  # TODO: CLEAN THIS UP
-  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*a630*
-  cp -vt "$qcomfw" ${vendor-firmware-files}/lib/firmware/*a630*
-  cp -vt "$gpu_qcomfw" ${vendor-firmware-files}/lib/firmware/*a630*
-  cp -vt "$qcafw" ${vendor-firmware-files}/lib/firmware/*a630*
+  # GPU - ADRENO 630 
+  gpufw="$out/lib/firmware/qcom"
+  mkdir -p $gpufw
+  (cd ${vendor-firmware-files}/lib/firmware/
+    ls
+    pil-squasher "$gpufw/a630_zap.mbn" ./a630_zap.mdt
+  )
   
   # BT
-  cp -vt "$qcomfw" ${vendor-firmware-files}/lib/firmware/*crbtfw*
-  cp -vt "$qcafw" ${vendor-firmware-files}/lib/firmware/*crbtfw*
-  cp -vt "$qcafw" ${vendor-firmware-files}/lib/firmware/*crnv*
+  btfw="$out/lib/firmware/${firmware-oem}/qca"
+  mkdir -p $btfw
+  cp -vt "$btfw" ${vendor-firmware-files}/lib/firmware/*crbtfw*
 
-  # Modem stuff
-  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*mba*
-  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*modem*
+  btqcafw="$out/lib/firmware/${firmware-oem}/qca/"
+  mkdir -p $btqcafw
+  cp -vt "$btqcafw" ${vendor-firmware-files}/lib/firmware/*crnv*
 
-  # Touch panel
+  # WIFI
+  # pmos:  lib/firmware/postmarketos/ath10k/WCN3990/hw1.0/board-2.bin
+  qcomwififw="$out/lib/firmware/qca/qcom"
+  mkdir -p $qcomwififw
+
+  # WIFI REGDB (upstream) ?
+  cp -vt $out/lib/firmware ${wireless-regdb}/lib/firmware/regulatory.db*
+    
+  # MODEM
+  (cd ${vendor-firmware-files}/lib/firmware/
+    ls
+    pil-squasher "$pixel3fw/modem.mbn" ./modem.mdt
+  )
+  cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/*modem*.jsn
+
+  # TOUCH SCREEN PANEL
   cp -vt "$pixel3fw" ${vendor-firmware-files}/lib/firmware/ftm5*.ftb
 
-  # (
-  #   cd $out/lib/firmware/qcom
-  #   for f in sdm845/pixel3/*; do
-  #    ln -sf $f
-  #   done
-  # )
 
-  # # Firmware we can get from upstream
+  # OLD: likely just purge:
+  # Firmware we can get from upstream
+  # TODO: still unclear on exactly what to take from upstream and not:
+  #
   # for firmware in \
   #   qca/crbtfw21.tlv \
   #   qca/crnv21.bin \
@@ -70,5 +91,4 @@ runCommandNoCC "google-blueline-firmware" {
   #   mkdir -p "$(dirname $out/lib/firmware/$firmware)"
   #   cp -vrf "$src/lib/firmware/$firmware" $out/lib/firmware/$firmware
   # done
-  cp -vt $out/lib/firmware ${wireless-regdb}/lib/firmware/regulatory.db*
 ''
