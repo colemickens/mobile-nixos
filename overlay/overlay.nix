@@ -33,6 +33,10 @@ in
     ply-image = callPackage ./ply-image { };
     qc-image-unpacker = callPackage ./qc-image-unpacker { };
     ufdt-apply-overlay = callPackage ./ufdt-apply-overlay {};
+    
+    # qualcomm extras
+    pil-squasher = callPackage ./pil-squasher {};
+    qca-swiss-army-knife = callPackage ./qca-swiss-army-knife {};
 
     # Extra "libs"
     mkExtraUtils = import ./lib/extra-utils.nix {
@@ -163,8 +167,6 @@ in
 
       mkLVGUIApp = callPackage ./mobile-nixos/lvgui {};
       
-      pil-squasher = callPackage ./mobile-nixos/pil-squasher {};
-
       cross-canary-test = callPackage ./mobile-nixos/cross-canary/test.nix {};
       cross-canary-test-static = self.pkgsStatic.callPackage ./mobile-nixos/cross-canary/test.nix {};
     };

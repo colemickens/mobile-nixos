@@ -8,7 +8,8 @@ let
     zstd "${f}" -o $out
   '';
 
-  firmware_class_path = "mobile-nixos";
+  fcp = "mobile-nixos";
+  firmware_class_path = "/lib/firmware/${fcp}";
   
   # flashScript = p: args: pkgs.substituteAll ({
   #   name = "flash-${p}.sh";
