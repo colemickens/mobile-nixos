@@ -8,6 +8,8 @@ let
     zstd "${f}" -o $out
   '';
 
+  firmware_class_path = "mobile-nixos";
+  
   # flashScript = p: args: pkgs.substituteAll ({
   #   name = "flash-${p}.sh";
   #   src = ./. + "/scripts/flash-${p}.sh";
@@ -94,6 +96,7 @@ in {
     # Extracted from an Android boot image
     "console=ttyMSM0,115200n8"
     "printk.devkmsg=on"
+    "firmware_class.path=${firmware_class_path}"
   ];
 
   mobile.system.type = "android";

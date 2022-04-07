@@ -53,7 +53,8 @@ let
     #  patches = [
     #    ./0001-HACK-Add-back-TEXT_OFFSET-in-the-built-image.patch
     #  ];
-
+    
+    
     inherit isModular isCompressed kernelFile;
   };
 

@@ -4,14 +4,14 @@ Date: Mon, 21 Mar 2022 00:30:15 -0700
 Subject: [PATCH] dtb fixups
 
 ---
- .../boot/dts/qcom/sdm845-google-blueline.dts  | 33 ++++++++++++++-----
- 1 file changed, 25 insertions(+), 8 deletions(-)
+ .../boot/dts/qcom/sdm845-google-blueline.dts  | 34 +++++++++++++++----
+ 1 file changed, 27 insertions(+), 7 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
-index e0dd41240045..8dbb4ea3a292 100644
+index e0dd41240045..28f771f702d3 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
 +++ b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
-@@ -177,9 +177,9 @@ sde_pmgpio_suspend: sde_pmgpio_suspend {
+@@ -177,9 +177,10 @@ sde_pmgpio_suspend: sde_pmgpio_suspend {
  };
  
  &adsp_pas {
@@ -20,10 +20,11 @@ index e0dd41240045..8dbb4ea3a292 100644
  
 -	firmware-name = "qcom/sdm845/pixel3/adsp.mbn";
 +	// firmware-name = "qcom/sdm845/pixel3/adsp.mdt";
++	firmware-name = "adsp.mbn";
  };
  
  &apps_rsc {
-@@ -338,8 +338,8 @@ vreg_bob: bob {
+@@ -338,8 +339,9 @@ vreg_bob: bob {
  };
  
  &cdsp_pas {
@@ -31,19 +32,20 @@ index e0dd41240045..8dbb4ea3a292 100644
 -	firmware-name = "qcom/sdm845/pixel3/cdsp.mbn";
 +	status = "okay";
 +	// firmware-name = "qcom/sdm845/pixel3/cdsp.mdt";
++	firmware-name = "cdsp.mbn";
  };
  
  &gpi_dma0 {
-@@ -374,7 +374,7 @@ st_fts@49 {
+@@ -374,7 +376,7 @@ st_fts@49 {
  		st,max-coords = <1079 2159>;
  		st,regulator_dvdd = "vdd";
  		st,regulator_avdd = "avdd";
 -		/* todo  st,firmware_name = "ftm4_fw.ftb"; */
-+		// st,firmware_name = "qcom/sdm845/pixel3/ftm5_fw.ftb";
++		st,firmware_name = "qcom/sdm845/pixel3/ftm5_fw.ftb";
  	};
  };
  
-@@ -562,6 +562,13 @@ bluetooth {
+@@ -562,6 +564,13 @@ bluetooth {
  		vddrf-supply = <&vreg_l17a_1p3>;
  		vddch0-supply = <&vreg_l25a_3p3>;
  		max-speed = <3200000>;
@@ -57,7 +59,7 @@ index e0dd41240045..8dbb4ea3a292 100644
  	};
  };
  
-@@ -689,16 +696,26 @@ pinconf-rx {
+@@ -689,15 +698,26 @@ pinconf-rx {
  	};
  };
  
@@ -71,22 +73,21 @@ index e0dd41240045..8dbb4ea3a292 100644
  	zap-shader {
  		memory-region = <&gpu_mem>;
 -		firmware-name = "qcom/sdm845/pixel3/a630_zap.mbn";
-+		// firmware-name = "qcom/sdm845/pixel3/a630_zap.mdt";
++		firmware-name = "a630_zap.mbn";
  	};
  };
  
 +&venus {
 +	status = "okay";
++	firmware-name = "venus.mbn";
 +};
 +
  &mss_pil {
 -	status = "disabled";
--	firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mbn";
 +	status = "okay";
-+	// firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mdt";
+ 	firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mbn";
  };
  
- &dsi0 {
 -- 
 2.35.1
 
