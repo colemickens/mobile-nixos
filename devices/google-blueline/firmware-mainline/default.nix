@@ -135,9 +135,13 @@ runCommandNoCC "google-blueline-firmware" {
   )
 
   # MODEM
-  (cd ${vendor-firmware-files}/lib/firmware/
-    pil-squasher "$fw_qcom_p3/modem.mbn" ./modem.mdt
-  )
+  # (cd ${vendor-firmware-files}/lib/firmware/
+  #   pil-squasher "$fw_qcom_p3/modem.mbn" ./modem.mdt
+  # )
+    
+  cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modem.mdt
+  cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modem.b*
+
   cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/mba.mbn
   cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modemr.jsn
   cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modemuw.jsn

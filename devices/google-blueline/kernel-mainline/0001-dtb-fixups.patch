@@ -4,11 +4,11 @@ Date: Mon, 21 Mar 2022 00:30:15 -0700
 Subject: [PATCH] dtb fixups
 
 ---
- .../boot/dts/qcom/sdm845-google-blueline.dts  | 24 +++++++++++++++----
- 1 file changed, 20 insertions(+), 4 deletions(-)
+ .../boot/dts/qcom/sdm845-google-blueline.dts  | 25 +++++++++++++++----
+ 1 file changed, 20 insertions(+), 5 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
-index e0dd41240045..6bd92174f5c5 100644
+index e0dd41240045..41fe42ea2738 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
 +++ b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
 @@ -177,7 +177,7 @@ sde_pmgpio_suspend: sde_pmgpio_suspend {
@@ -16,7 +16,7 @@ index e0dd41240045..6bd92174f5c5 100644
  
  &adsp_pas {
 -	status = "disabled";
-+	status = "enabled";
++	status = "okay";
  
  	firmware-name = "qcom/sdm845/pixel3/adsp.mbn";
  };
@@ -25,7 +25,7 @@ index e0dd41240045..6bd92174f5c5 100644
  
  &cdsp_pas {
 -	status = "disabled";
-+	status = "enabled";
++	status = "okay";
  	firmware-name = "qcom/sdm845/pixel3/cdsp.mbn";
  };
  
@@ -47,7 +47,7 @@ index e0dd41240045..6bd92174f5c5 100644
  	};
  };
  
-@@ -689,16 +691,30 @@ pinconf-rx {
+@@ -689,16 +691,29 @@ pinconf-rx {
  	};
  };
  
@@ -72,10 +72,10 @@ index e0dd41240045..6bd92174f5c5 100644
 +
  &mss_pil {
 -	status = "disabled";
+-	firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mbn";
 +	status = "okay";
- 	firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mbn";
-+	// firmware-name = "qcom/sdm845/pixel3/modem.mbn", "qcom/sdm845/pixel3/mba.mbn";
-+	// firmware-name = "qcom/sdm845/pixel3/mba.mbn";
++	//firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mbn";
++	firmware-name = "qcom/sdm845/pixel3/mba.mbn", "qcom/sdm845/pixel3/modem.mdt";
  };
  
  &dsi0 {
