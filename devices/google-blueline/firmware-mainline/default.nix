@@ -78,7 +78,10 @@ runCommandNoCC "google-blueline-firmware" {
   # - ./lib/firmware/qcom/sdm845/pixel3/wlanmdsp.mbn
 
   # TODO: what about "a630_zap.elf" from vendor-fw?
-    
+  # TODO: qdsp6m.qdb  from vendor-fw?
+  # TODO:
+  # SLPI - slpi.mdt - "low power island" "sensor DSP"
+
   # ADSP/CDSP = Qualcomm "application DSP" (Compute DSP) + Audio DSP
   (cd ${vendor-firmware-files}/lib/firmware/
     pil-squasher "$fw_qcom_p3/adsp.mbn" ./adsp.mdt
@@ -86,11 +89,7 @@ runCommandNoCC "google-blueline-firmware" {
   )
   cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/*adsp*.{mbn,jsn}
   cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/*cdsp*.{mbn,jsn}
-  # TODO: qdsp6m.qdb  from vendor-fw?
-  
-  # SLPI - slpi.mdt - "low power island" "sensor DSP"
-  # TODO
-  
+    
   # VENUS - video accel
   (cd ${vendor-firmware-files}/lib/firmware/
     pil-squasher "$fw_qcom_p3/venus.mbn" ./venus.mdt

@@ -4,13 +4,31 @@ Date: Mon, 21 Mar 2022 00:30:15 -0700
 Subject: [PATCH] dtb fixups
 
 ---
- .../boot/dts/qcom/sdm845-google-blueline.dts  | 20 +++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
+ .../boot/dts/qcom/sdm845-google-blueline.dts  | 24 +++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
-index e0dd41240045..ed0898b7f300 100644
+index e0dd41240045..6bd92174f5c5 100644
 --- a/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
 +++ b/arch/arm64/boot/dts/qcom/sdm845-google-blueline.dts
+@@ -177,7 +177,7 @@ sde_pmgpio_suspend: sde_pmgpio_suspend {
+ };
+ 
+ &adsp_pas {
+-	status = "disabled";
++	status = "enabled";
+ 
+ 	firmware-name = "qcom/sdm845/pixel3/adsp.mbn";
+ };
+@@ -338,7 +338,7 @@ vreg_bob: bob {
+ };
+ 
+ &cdsp_pas {
+-	status = "disabled";
++	status = "enabled";
+ 	firmware-name = "qcom/sdm845/pixel3/cdsp.mbn";
+ };
+ 
 @@ -374,7 +374,7 @@ st_fts@49 {
  		st,max-coords = <1079 2159>;
  		st,regulator_dvdd = "vdd";
