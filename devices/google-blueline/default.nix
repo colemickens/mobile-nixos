@@ -114,7 +114,7 @@ in {
     rndis = "rndis.usb0";
   };
 
-  mobile.quirks.qualcomm.sdm845-modem.enable = true;
+  # mobile.quirks.qualcomm.sdm845-modem.enable = true;
 
   mobile.system.android.system_partition_destination = "userdata";
 }
