@@ -1,7 +1,15 @@
 { config, lib, pkgs, ... }:
 
 let
-  kernel_sdm845 = pkgs.callPackage ../google-blueline/kernel-sdm845 { isCompressed = "gz"; };
+  # kernel_sdm845 = pkgs.callPackage ../google-blueline/kernel-sdm845 { isCompressed = "gz"; };
+  sdm845 = pkgs.callPackage ../google-blueline/kernel-sdm845 { isCompressed = "gz"; };
+  # TODO: THIS IS ABSOLUTELY CRAP WRONG REMOVE IMMEDIATELY
+  # kernel = pkgs.callPackage ../google-blueline/kernel-mainline {
+  #   sdm845 = sdm845;
+  # };
+
+  kernel_ = sdm845.kernels.oneplus-enchilada;
+  kernel = lib.traceVal kernel_;
 in {
   mobile.device.name = "oneplus-enchilada";
   mobile.device.identity = {
@@ -19,7 +27,7 @@ in {
 
   mobile.boot.stage-1 = {
     compression = "xz";
-    kernel.package = kernel_sdm845;
+    kernel.package = kernel;
     firmware = [
       config.mobile.device.firmware
     ];

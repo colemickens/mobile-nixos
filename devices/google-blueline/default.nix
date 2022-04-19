@@ -21,12 +21,11 @@ let
   
   sdm845 = pkgs.callPackage ./kernel-sdm845 {};
   
-  kernel_mainline = pkgs.callPackage ./kernel-mainline {
+  kernel_ = pkgs.callPackage ./kernel-mainline {
     sdm845 = sdm845;
   };
-  kernel_mainparts = pkgs.callPackage ./kernel-mainline {
-    sdm845 = sdm845;
-  };
+  kernel = kernel_;
+  # kernel = sdm845.kernels.google-blueline;
 in {
   mobile.device.name = "google-blueline";
   mobile.device.identity = {
@@ -60,29 +59,10 @@ in {
     };
   };
   
-  # system.build.flash-boot = flashScript "boot" {
-  #   bootfs_zstd = zstdify config.mobile.outputs.android.android-bootimg.outPath;
-  #   bootfs_dest = config.mobile.system.android.boot_partition_destination;
-  #   firmware = config.mobile.device.firmware;
-  # };
-  # system.build.flash-system = flashScript "system" {
-  #   rootfs_zstd = zstdify (let r=config.mobile.outputs.generatedFilesystems.rootfs; in "${r}/${r.filename}");
-  #   rootfs_dest = config.mobile.system.android.system_partition_destination;
-  # };
-
   hardware.enableRedistributableFirmware = true;
   hardware.firmware = lib.mkBefore [ config.mobile.device.firmware ];
 
-  # option 1: generic kernel + dtb->mkbootimg
-  # TODO: the sdm845 kernel doesnt have blueline yet:
-  # mobile.boot.stage-1.kernel.package = kernel_sdm845;
-  #TODO: this will change to "sdm845-google-blueline.dtb"
-  # mobile.system.android.bootimg.dtb = "${kernel_sdm845}/dtbs/qcom/sdm845-blueline.dtb";
-    
-  # option 2: blueline kernel with dtb appended already (well, its not appened rn)
-  # mobile.boot.stage-1.kernel.package = kernel_mainline;
-
-  mobile.boot.stage-1.kernel.package = kernel_mainparts;
+  mobile.boot.stage-1.kernel.package = kernel;
 
   mobile.boot.stage-1 = {
     compression = "xz";

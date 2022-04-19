@@ -35,7 +35,8 @@ let
     isCompressed = "gz";
     kernelFile = "Image.${isCompressed}";
   };
-  appendDtb = device: rawkernel: dtb: runCommandNoCC "${device}-kernel-dtb"
+  appendDtb = device: rawkernel: dtb: 
+    (runCommandNoCC "${device}-kernel-dtb"
     {
       version = rawkernel.version;
       passthru =
@@ -56,7 +57,7 @@ let
         ${dtb} \
         > $out/Image.${rawkernel.isCompressed}-dtb
       )
-    '';
+    '');
 in
 {
   tools = { inherit appendDtb; };
