@@ -21,7 +21,9 @@ let
   
   sdm845 = pkgs.callPackage ./kernel-sdm845 {};
   
-  kernel_mainline = pkgs.callPackage ./kernel-mainline { };
+  kernel_mainline = pkgs.callPackage ./kernel-mainline {
+    sdm845 = sdm845;
+  };
   kernel_mainparts = pkgs.callPackage ./kernel-mainline {
     sdm845 = sdm845;
   };

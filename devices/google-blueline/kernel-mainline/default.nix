@@ -60,8 +60,8 @@ let
 
   device = "google-blueline";
 in
-sdm845.tools.appendDtb
+(sdm845.tools.appendDtb
   device
   blueKernel
-  "${dtbKernel}/dtbs/qcom/sdm845-${device}.dtb"
+  "${dtbKernel}/dtbs/qcom/sdm845-${device}.dtb")
 
