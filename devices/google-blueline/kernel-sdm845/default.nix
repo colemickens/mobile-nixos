@@ -61,6 +61,7 @@ in
 {
   tools = { inherit appendDtb; };
   kernels = lib.genAttrs
+    [ "google-blueline" "oneplus-enchilada" ]
     (d: (appendDtb d k845 "${k845}/dtbs/qcom/sdm845-${d}.dtb"))
-    [ "google-blueline" "oneplus-enchilada" ];
+  ;
 }
