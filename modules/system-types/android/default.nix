@@ -160,6 +160,7 @@ in
           "offset_second"
           "offset_ramdisk"
           "offset_tags"
+          "offset_dtb"
           "pagesize"
         ] mkBootimgOption;
       };
