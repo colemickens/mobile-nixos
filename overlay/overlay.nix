@@ -68,6 +68,7 @@ in
     qtestsign = callPackage ./qtestsign {};
 
     lk2ndMsm8953 = callPackage ./lk2nd/msm8953.nix {};
+    lk2ndMsm8913openstick = callPackage ./lk2nd/msm8913openstick.nix {};
 
     #
     # Hacks
