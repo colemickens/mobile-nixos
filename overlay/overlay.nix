@@ -64,6 +64,8 @@ in
     tqftpserv = callPackage ./qrtr/tqftpserv.nix { };
     pd-mapper = callPackage ./qrtr/pd-mapper.nix { };
     rmtfs = callPackage ./qrtr/rmtfs.nix { };
+    
+    qtestsign = callPackage ./qtestsign {};
 
     lk2ndMsm8953 = callPackage ./lk2nd/msm8953.nix {};
 
