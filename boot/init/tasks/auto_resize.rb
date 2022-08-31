@@ -9,7 +9,10 @@ class Tasks::AutoResize < Task
     add_dependency(:Mount, "/sys")
     # For better user experience.
     # Otherwise the device may look like it's hanging.
-    add_dependency(:Target, :Graphics)
+    gui_enabled = false # TODO
+    if gui_enabled
+      add_dependency(:Target, :Graphics)
+    end
   end
 
   # Computes whether a filesystem needs to be expanded.

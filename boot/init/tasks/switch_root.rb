@@ -242,7 +242,10 @@ class Tasks::SwitchRoot < SingletonTask
   end
 
   def initialize()
-    add_dependency(:Task, Tasks::Splash.instance)
+    gui_enabled=false # TODO: this needs to be thought through, and Config'd
+    if gui_enabled
+      add_dependency(:Task, Tasks::Splash.instance)
+    end
     add_dependency(:Target, :SwitchRoot)
 
     # By default, with stage-0, we prefer using the generation kernel

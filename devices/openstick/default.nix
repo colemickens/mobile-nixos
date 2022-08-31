@@ -23,6 +23,7 @@ in
     kernel.package = pkgs.callPackage ./kernel { };
     bootlog.enable = false;
     crashToBootloader = true;
+    gui.enable = false;
   };
 
   mobile.device.firmware = pkgs.callPackage ./firmware {};
