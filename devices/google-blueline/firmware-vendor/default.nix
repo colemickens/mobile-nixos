@@ -9,12 +9,9 @@
 }:
 
 let
-  # https://dl.google.com/dl/android/aosp/blueline-rq3a.210605.005-factory-53820251.zip
-  buildID = "rq3a.210605.005";
-  upstreamImage = fetchurl {
-    url = "https://dl.google.com/dl/android/aosp/blueline-${buildID}-factory-53820251.zip";
-    sha256 = "17l4b5gs8g182czl3zyvs8kydb6w23hbwkd2m9ngy7wfym8h50jk";
-  };
+  upstream = import ./upstream.nix { inherit fetchurl; };
+  upstreamImage = upstream.image;
+  buildID = upstream.buildID;
 in
 runCommandNoCC "google-blueline-firmware" {
   nativeBuildInputs = [ unzip e2fsprogs mtools simg2img qc-image-unpacker ];
