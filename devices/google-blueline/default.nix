@@ -32,7 +32,7 @@ in {
     # NOTE: while A/B, we cannot rely on anything else than `boot` as this
     #       device uses dynamic partitions.
     ab_partitions = true;
-    boot_as_recovery = true;
+    boot_as_recovery = false;
 
     bootimg.flash = {
       offset_base = "0x00000000";
