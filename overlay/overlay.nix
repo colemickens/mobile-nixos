@@ -33,6 +33,7 @@ in
     ply-image = callPackage ./ply-image { };
     qc-image-unpacker = callPackage ./qc-image-unpacker { };
     ufdt-apply-overlay = callPackage ./ufdt-apply-overlay {};
+    pil-squasher = callPackage ./pil-squasher {};
 
     # Extra "libs"
     mkExtraUtils = import ./lib/extra-utils.nix {
