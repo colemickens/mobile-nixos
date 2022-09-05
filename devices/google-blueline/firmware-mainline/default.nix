@@ -13,7 +13,8 @@ runCommandNoCC "google-blueline-firmware" {
   qcomfw="$out/lib/firmware/qca/qcom"
   qcafw="$out/lib/firmware/qca"
   gpu_qcomfw="$out/lib/firmware/qcom"
-  venusfw="$out/lib/firmware/qcom/venus-5.2"
+  # venusfw="$out/lib/firmware/qcom/venus-5.2"
+  venusfw="$pixel3fw" # moved?
   mkdir -p $pixel3fw
   mkdir -p $qcomfw
   mkdir -p $qcafw
@@ -73,13 +74,28 @@ runCommandNoCC "google-blueline-firmware" {
 
   cp -vt $out/lib/firmware ${wireless-regdb}/lib/firmware/regulatory.db*
   
+  ##############
   cd $out/lib/firmware/qcom/sdm845/pixel3
-  ln -s a630_zap.mdt a630_zap.mbn
-  ln -s adsp.mdt adsp.mbn
-  # ln -s cdsp.mdt cdsp.mbn # already exists
-  ln -s modem.mdt modem.mbn
-  ln -s venus.mdt venus.mbn
 
+  ls -al a630_zap.mdt
+  ln -s a630_zap.mdt a630_zap.mbn
+
+  ls -al adsp.mdt
+  ln -s adsp.mdt adsp.mbn
+
+  # ls al cdsp.mdt
+  # ln -s cdsp.mdt cdsp.mbn # already exists
+  
+  ls -al modem.mdt
+  ln -s modem.mdt modem.mbn
+  
+  ##############
+  # already exists as mbn
+  # cd "$venusfw"
+  # ls -al venus.mdt
+  # ln -s venus.mdt venus.mbn
+
+  ###############
   # ls -R -al $out
   # exit -1
 ''
