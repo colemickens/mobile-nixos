@@ -14,6 +14,7 @@ let
   buildID = upstream.buildID;
 in
 runCommandNoCC "google-blueline-firmware" {
+  version = upstream.buildID;
   nativeBuildInputs = [ unzip e2fsprogs mtools simg2img qc-image-unpacker ];
   meta.license = [
     # We make no claims that it can be redistributed.
