@@ -17,14 +17,11 @@
 
   mobile.boot.stage-1 = {
     compression = "xz";
-    kernel.package = pkgs.callPackage ./kernel { };
+    # kernel.package = pkgs.callPackage ./kernel { };
     firmware = [
       config.mobile.device.firmware
     ];
   };
-
-
-  mobile.device.firmware = pkgs.callPackage ./firmware {};
 
   mobile.system.android.device_name = "OnePlus6";
   mobile.system.android = {
@@ -38,6 +35,11 @@
       pagesize = "4096";
     };
   };
+
+  mobile.boot.stage-1.kernel.package = pkgs.kernel-sdm845;
+  mobile.system.android.bootimg.fdt = "${pkgs.kernel-sdm845}/dtbs/qcom/sdm845-oneplus-enchilada.dtb";
+
+  mobile.device.firmware = pkgs.callPackage ./firmware {};
 
   boot.kernelParams = [
     "console=tty0"

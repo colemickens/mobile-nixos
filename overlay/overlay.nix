@@ -115,10 +115,13 @@ in
         "--enable-qrtr"
       ];
     });
+    
+    kernel-sdm845 = callPackage ./kernel-sdm845 {};
 
     # Things specific to mobile-nixos.
     # Not necessarily internals, but they probably won't go into <nixpkgs>.
     mobile-nixos = {
+      dtbappend = callPackage ./mobile-nixos/kernel/dtbappend.nix {};
       kernel-builder = callPackage ./mobile-nixos/kernel/builder.nix {};
       kernel-builder-gcc49 = callPackage ./mobile-nixos/kernel/builder.nix {
         stdenv = with self; overrideCC stdenv buildPackages.gcc49;

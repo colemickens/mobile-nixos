@@ -170,7 +170,7 @@ in
     }
     # Options affecting the NixOS configuration
     (mkIf (!cfg.useNixOSKernel) {
-      boot.kernelPackages = mkDefault (
+      boot.kernelPackages = builtins.trace "${toString config.mobile.enable}" mkDefault (
         if (supportsStage-0 && config.mobile.rootfs.shared.enabled) || cfg.package == null
         then let
           self = {
