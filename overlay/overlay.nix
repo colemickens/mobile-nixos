@@ -34,6 +34,7 @@ in
     qc-image-unpacker = callPackage ./qc-image-unpacker { };
     ufdt-apply-overlay = callPackage ./ufdt-apply-overlay {};
     pil-squasher = callPackage ./pil-squasher {};
+    qca-swiss-army-knife = callPackage ./qca-swiss-army-knife {};
 
     # Extra "libs"
     mkExtraUtils = import ./lib/extra-utils.nix {
