@@ -139,8 +139,8 @@ runCommandNoCC "google-blueline-firmware" {
     pil-squasher "$fw_qcom_p3/modem.mbn" ./modem.mdt
   )
     
-  cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modem.mdt
-  cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modem.b*
+  # cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modem.mdt
+  # cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modem.b*
 
   cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/mba.mbn
   cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/modemr.jsn
@@ -148,4 +148,7 @@ runCommandNoCC "google-blueline-firmware" {
 
   # TOUCH SCREEN PANEL
   cp -vt "$fw_qcom_p3" ${vendor-firmware-files}/lib/firmware/ftm5*.ftb
+  
+  # ls -al -R $out/
+  # exit -1
 ''
