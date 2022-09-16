@@ -47,6 +47,7 @@ in
   mobile.boot.stage-1.usb.enable = false;
 
   systemd.packages = [ pkgs.rmtfs pkgs.qrtr ];
+  systemd.services."rmtfs".wantedBy = [ "multi-user.target"]; # won't autostart otherwise
 
   mobile.system.system = "aarch64-linux";
   mobile.system.android.device_name = "openstick";
