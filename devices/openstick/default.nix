@@ -1,7 +1,5 @@
 { config, lib, pkgs, ... }:
 
-# TODO: most of this hasn't been updated, etc
-
 let
   openstick_lk2nd = pkgs.lk2ndMsm8913openstick;
 in
@@ -43,9 +41,6 @@ in
     ''
   );
 
-  # mobile.adbd.enable = false;
-  mobile.boot.stage-1.usb.enable = false;
-
   systemd.packages = [ pkgs.rmtfs pkgs.qrtr ];
   systemd.services."rmtfs".wantedBy = [ "multi-user.target"]; # won't autostart otherwise
 
@@ -72,10 +67,21 @@ in
   ];
 
   # TODO
-  mobile.usb.mode = "android_usb";
+  mobile.system.type = "android";
+
+  # samueldr recommended, but doesn't seem to exist:
+  # mobile.boot.stage-1.splash.enable = false;
+
+  mobile.adbd.enable = true;
+  mobile.boot.stage-1.usb.enable = true;
+
+  mobile.usb.mode = "gadgetfs";
   mobile.usb.idVendor = "18D1";
   mobile.usb.idProduct = "4EE4";
-  mobile.system.type = "android";
+  mobile.usb.gadgetfs.functions = {
+    # rndis = "rndis.usb0";
+    adb = "ffs.adb";
+  };
 
   # mobile.quirks.qualcomm.wcnss-wlan.enable = true;
   mobile.quirks.wifi.disableMacAddressRandomization = true;
