@@ -160,6 +160,12 @@ in
     mobile = {
       outputs = {
         android = {
+          reset-script = lib.mkOption {
+            type = types.package;
+            description = ''
+              reset script for flashing stock image partitions
+            '';
+          };
           android-bootimg = lib.mkOption {
             type = types.package;
             description = ''
