@@ -1,0 +1,43 @@
+From 7dd9c8d2d87b41212c25913696733f97718f6400 Mon Sep 17 00:00:00 2001
+From: Cole Mickens <cole.mickens@gmail.com>
+Date: Sat, 17 Sep 2022 21:11:19 -0700
+Subject: [PATCH] pinephone: emmc mod direct in device-tree
+
+---
+ arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
+index 2fd122bfca09..493648313ebf 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
+@@ -771,14 +771,15 @@ rtl8723cs: wifi@1 {
+ 
+ &mmc2 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&mmc2_pins>;
++	pinctrl-0 = <&mmc2_pins>, <&mmc2_ds_pin>;
+ 	vmmc-supply = <&reg_dcdc1>;
+-	vqmmc-supply = <&reg_dcdc1>;
++	vqmmc-supply = <&reg_eldo1>;
+ 	bus-width = <8>;
+ 	non-removable;
+ 	cap-mmc-hw-reset;
+ 	post-power-on-delay-ms = <1>; /* power is already turned on by the bootloader */
+ 	status = "okay";
++	mmc-hs200-1_8v;
+ };
+ 
+ &ohci0 {
+@@ -791,7 +792,7 @@ &ohci1 {
+ 
+ &pio {
+ 	vcc-pb-supply = <&reg_dcdc1>;
+-	vcc-pc-supply = <&reg_dcdc1>;
++	vcc-pc-supply = <&reg_eldo1>;
+ 	vcc-pd-supply = <&reg_dcdc1>;
+ 	vcc-pe-supply = <&reg_aldo1>;
+ 	vcc-pf-supply = <&reg_dcdc1>;
+-- 
+2.37.2
+

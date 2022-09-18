@@ -17,6 +17,7 @@ mobile-nixos.kernel-builder {
     sha256 = "sha256-XOy011gGTxxof2syG5fk1xlpmUVvzTBMT98YfkNlD+s=";
   };
   patches = [
+    ./0001-pinephone-emmc-mod-direct-in-device-tree.patch
     ./0001-dts-pinephone-Setup-default-on-and-panic-LEDs.patch
     (fetchpatch {
       url = "https://github.com/mobile-nixos/linux/commit/372597b5449b7e21ad59dba0842091f4f1ed34b2.patch";
