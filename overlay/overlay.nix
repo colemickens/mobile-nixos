@@ -63,6 +63,8 @@ in
     tqftpserv = callPackage ./qrtr/tqftpserv.nix { };
     pd-mapper = callPackage ./qrtr/pd-mapper.nix { };
     rmtfs = callPackage ./qrtr/rmtfs.nix { };
+    
+    payload-dumper-go = callPackage ./payload-dumper-go { };
 
     #
     # Hacks
