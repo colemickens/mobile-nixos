@@ -17,6 +17,8 @@
       width = 1080; height = 2280;
     };
   };
+  
+  mobile.outputs.android.reset-script = pkgs.callPackage ./firmware-stock {};
 
   mobile.device.firmware = pkgs.callPackage ./firmware {};
 
