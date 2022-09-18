@@ -28,6 +28,7 @@
     # Not boot as recovery. (Will not provide skip_initramfs on normal boots.)
     boot_as_recovery = false;
   };
+  mobile.outputs.android.reset-script = pkgs.callPackage ./firmware-stock {};
 
   boot.kernelParams = lib.mkAfter [
     # If this is not present, the system will fail to boot reliably.
