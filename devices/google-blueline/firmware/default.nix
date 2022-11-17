@@ -1,11 +1,11 @@
 { runCommand
 , fetchFromGitLab
-, firmwareLinuxNonfree
+, linux-firmware
 , wireless-regdb
 }:
 
 runCommand "google-blueline-firmware" {
-  src = firmwareLinuxNonfree;
+  src = linux-firmware;
   sdm845_mainline = fetchFromGitLab {
     owner = "sdm845-mainline";
     repo = "firmware-google-pixel3";
