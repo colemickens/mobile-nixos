@@ -6,6 +6,10 @@
 }:
 
 let
+  # note, this somehow also exists: https://androidfilehost.com/?fid=7161016148664850007
+  # but doesn't on OP servers...
+  # OnePlus6Oxygen_22.J.62_OTA_0620_all_2111252336_14afec75dd6fa.zip
+  # stockVersion = "22.J.62_OTA_0620_all_2111252336_14afec75dd6fa.zip
   stockVersion = "22.J.62_OTA_0620_all_2111252336_287bcb1636d743d3";
   stockPayload = fetchurl {
     url = "https://oxygenos.oneplus.net/OnePlus6Oxygen_${stockVersion}.zip";
@@ -19,11 +23,12 @@ let
     payload-dumper-go --output "$out" "$tmpdir/payload.bin"
   '';
   resetScript = (writeShellScriptBin "reset-oneplus6.sh" ''
+    set -x
     which fastboot || (echo "you must have fastboot available" && exit -1)
 
     cd "${stockFirmware}"
     pwd
-    slots="a b"
+    slots="a"
     for slot in $slots; do
       fastboot set_active $slot
 
@@ -50,7 +55,8 @@ let
       # fastboot flash xbl_config xbl_config.img
       
       ## not listed on lineageos (maybe not firmware, but still)
-      # fastboot flash --slot=$slot boot boot.img
+      fastboot flash --slot=$slot boot boot.img
+      fastboot flash --slot=$slot dtbo dtbo.img
       # fastboot flash --slot=$slot system system.img
       fastboot flash vendor vendor.img
       # fastboot flash --slot=$slot india india.img
@@ -61,7 +67,7 @@ let
       
       # mainline/bootloader requires dtbo wiped to load DTB from end of kernel:
       # TODO: consider breaking this into a separate script/step
-      fastboot erase dtbo
+      # fastboot erase dtbo
     done
     
     fastboot set_active a
