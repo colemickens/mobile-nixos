@@ -71,7 +71,7 @@ in
       config = { config, ... }: {
         mobile.boot.stage-1.stage = if supportsStage-0 then 0 else 1;
         mobile.boot.stage-1.extraUtils = with pkgs; [
-          { package = pkgs.kexectools; }
+          { package = pkgs.kexec-tools; }
           { package = fdt-forward; }
         ];
         mobile.boot.stage-1.bootConfig.stage-0 = {
