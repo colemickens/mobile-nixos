@@ -6,7 +6,7 @@
   ./boot-control.nix
   ./boot-initrd.nix
   ./bootloader.nix
-  ./cross-workarounds.nix
+  # ./cross-workarounds.nix
   ./devices-metadata.nix
   ./documentation.nix
   ./generated-filesystems.nix

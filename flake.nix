@@ -25,15 +25,18 @@
     in {
       inputs = inputs;
       
-      devShell = forAllSystems (s: import ./shell.nix { pkgs = import nixpkgs { system = s; }; });
+      # devShell = forAllSystems (s: import ./shell.nix { pkgs = import nixpkgs { system = s; }; });
 
       overlay = final: prev: (self.overlays.default final prev) // (self.overlays.mruby-builder final prev);
 
-      packages = forAllSystems (s: 
-        let
-          nixpkgs = import inputs.nixpkgs { system = s; overlays = [self.overlay ]; };
-        in self.overlays.default nixpkgs nixpkgs
-      );
+      # packages = forAllSystems (s: 
+      #   let
+      #     nixpkgs = import inputs.nixpkgs {
+      #       hostPlatform.system = s;
+      #       overlays = [self.overlay ];
+      #     };
+      #   in self.overlays.default nixpkgs nixpkgs
+      # );
       
       overlays = {
         default = import ./overlay/overlay.nix;
