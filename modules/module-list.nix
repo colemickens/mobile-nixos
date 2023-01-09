@@ -7,7 +7,7 @@
   ./boot-initrd.nix
   ./boot.nix
   ./bootloader.nix
-  ./cross-workarounds.nix
+  # ./cross-workarounds.nix
   ./devices-metadata.nix
   ./disk-image.nix
   ./documentation.nix

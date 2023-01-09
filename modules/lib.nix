@@ -4,8 +4,6 @@ let
   # Keep modules from this eval around
   modules' = modules;
 
-  inherit (config.nixpkgs.localSystem) system;
-
   # We can make use the normal NixOS evalConfig here.
   evalConfig = import "${toString pkgs.path}/nixos/lib/eval-config.nix";
 in
@@ -24,7 +22,7 @@ in
         filteredArgs // {
         # Needed for hermetic eval, otherwise `eval-config.nix` will try
         # to use `builtins.currentSystem`.
-        inherit system;
+        # inherit system;
         inherit baseModules;
         # Newer versions of module system pass specialArgs to modules, so try
         # to pass that to eval if possible.
