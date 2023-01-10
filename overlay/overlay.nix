@@ -22,7 +22,7 @@ in
     eg25-manager = callPackage ./eg25-manager { };
     libhybris = callPackage ./libhybris {
       # FIXME : verify how it acts on native aarch64 build.
-      stdenv = if self.buildPlatform != self.targetPlatform then
+      stdenv = if self.stdenv.buildPlatform != self.stdenv.targetPlatform then
         self.stdenv
       else
         with self; overrideCC stdenv (merged_gcc7)
