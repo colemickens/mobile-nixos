@@ -13,7 +13,7 @@
       supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
       forAllSystems = genAttrs supportedSystems;
 
-      devices = builtins.filter
+      deviceNames = builtins.filter
         (device: builtins.pathExists (./. + "/devices/${device}/default.nix"))
         (builtins.attrNames (builtins.readDir ./devices));
 
@@ -22,8 +22,9 @@
         value = (import ./lib/configuration.nix { inherit device; });
       };
 
-    in {
-      inputs = inputs;
+      nixosModules = builtins.listToAttrs (builtins.map mkDeviceModule deviceNames);
+    in rec {
+      inherit inputs nixosModules;
       
       # devShell = forAllSystems (s: import ./shell.nix { pkgs = import nixpkgs { system = s; }; });
 
@@ -43,6 +44,13 @@
         mruby-builder = import ./overlay/mruby-builder/overlay.nix;
       };
 
-      nixosModules = builtins.listToAttrs (builtins.map mkDeviceModule devices);
+      devices = genAttrs deviceNames (d: {
+        example = inputs.nixpkgs.lib.nixosSystem {
+          modules = [
+            (nixosModules.${d})
+            { nixpkgs.hostPlatform.system = "aarch64-linux"; }
+          ];
+        };
+      });
     };
 }
