@@ -34,14 +34,13 @@ let
 vk = mobile-nixos.kernel-builder-gcc6 rec {
   configfile = ./config.aarch64;
 
-  version = "5.15.0"; # -msm8916";
+  version = "5.15.13"; # -msm8916";
   src = fetchFromGitHub {
     # owner = "OpenStick";
     owner = "colemickens";
     repo = "linux";
-    rev = "19d30bdbf3aeecbbec0a81217f19cbf0318f273b";
-    # rev = "3b1d3bfb978fb2be6707d033f26205104d60c92f";
-    sha256 = "sha256-mp+QjfmAuoAc7P/r2njfcLZCVnuBqvF4V8MrRXy5Dn0=";
+    rev = "d7635fe5da2b774fc7a21f94519c00a5cf1abb1e";
+    hash = "sha256-kcEAq3AXLw6MoG91xC1iPFTviQUYNldmGkb1RATHeQQ=";
   };
 
   patches = [
