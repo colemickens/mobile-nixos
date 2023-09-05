@@ -19,10 +19,17 @@
 
       mkDeviceModule = device: {
         name = device;
-        value = (import ./lib/configuration.nix { inherit device; });
+        # value = (import ./lib/configuration.nix { inherit device; });
+        value = ({...}: {
+          imports = [ ./devices/${device}/default.nix ]
+            ++ (import ./modules/module-list.nix);
+        });
       };
 
-      nixosModules = builtins.listToAttrs (builtins.map mkDeviceModule deviceNames);
+      nixosModules = {
+        devices = builtins.listToAttrs (builtins.map mkDeviceModule deviceNames);
+      };
+      
     in rec {
       inherit inputs nixosModules;
       
@@ -47,7 +54,7 @@
       devices = genAttrs deviceNames (d: {
         example = inputs.nixpkgs.lib.nixosSystem {
           modules = [
-            (nixosModules.${d})
+            (nixosModules.devices.${d})
             { nixpkgs.hostPlatform.system = "aarch64-linux"; }
           ];
         };
