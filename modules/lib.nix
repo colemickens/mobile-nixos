@@ -23,6 +23,8 @@ in
         # Needed for hermetic eval, otherwise `eval-config.nix` will try
         # to use `builtins.currentSystem`.
         # inherit system;
+        system = null;
+
         inherit baseModules;
         # Newer versions of module system pass specialArgs to modules, so try
         # to pass that to eval if possible.
