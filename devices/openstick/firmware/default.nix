@@ -15,7 +15,7 @@ let
     url = "https://github.com/Informatic/stick-blobs/raw/abdf16d3aa2e415c6c41062a5e2575cdc7b70fd8/stock-uf896_v1_1/persist.bin";
     sha256 = "sha256-3xW6e0eKEpeR1Nz4uQGG0BIWzEVq/o7jtpSZvgRIiX0=";
   };
-in runCommandNoCC "openstick-firmware" {
+in runCommand "openstick-firmware" {
   nativeBuildInputs = [ e2fsprogs mtools ];
   meta.license = [
     # We make no claims that it can be redistributed.
