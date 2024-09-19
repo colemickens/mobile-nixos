@@ -115,8 +115,8 @@ in
       kernel-builder-gcc49 = callPackage ./mobile-nixos/kernel/builder.nix {
         stdenv = with self; overrideCC stdenv buildPackages.gcc49;
       };
-      kernel-builder-gcc6 = callPackage ./mobile-nixos/kernel/builder.nix {
-        stdenv = with self; overrideCC stdenv buildPackages.gcc6;
+      kernel-builder-gcc7 = callPackage ./mobile-nixos/kernel/builder.nix {
+        stdenv = with self; overrideCC stdenv buildPackages.gcc7;
       };
       kernel-builder-clang_8 = callPackage ./mobile-nixos/kernel/builder.nix {
         stdenv = with self; overrideCC stdenv buildPackages.clang_8;

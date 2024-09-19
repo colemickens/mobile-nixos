@@ -31,7 +31,7 @@ let
       )
     '');
 
-vk = mobile-nixos.kernel-builder-gcc6 rec {
+vk = mobile-nixos.kernel-builder-gcc7 rec {
   configfile = ./config.aarch64;
 
   version = "5.15.13"; # -msm8916";
